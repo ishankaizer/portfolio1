@@ -187,6 +187,48 @@
       linear-gradient(90deg, var(--color-grid-strong) 1px, transparent 1px);
     background-size: var(--grid-size, 32px) var(--grid-size, 32px);
   }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom cursor (fine-pointer only; native cursor hidden while active). */
+@media (pointer: fine) {
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  height: 26px;
+  width: 26px;
+  border: 1.5px solid #fff;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  will-change: transform;
+  transition:
+    height 0.22s cubic-bezier(0.16, 0.84, 0.3, 1),
+    width 0.22s cubic-bezier(0.16, 0.84, 0.3, 1),
+    background-color 0.22s ease,
+    opacity 0.2s ease;
+}
+.custom-cursor[data-hover='true'] {
+  height: 46px;
+  width: 46px;
+  background: #fff;
+}
+.custom-cursor[data-down='true'] {
+  height: 20px;
+  width: 20px;
 }
 
 /* Machine easing, mechanical, torqued, never sprung. */

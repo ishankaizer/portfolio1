@@ -4,6 +4,7 @@ import { SelectedWork } from '@/sections/selected-work'
 import { About } from '@/sections/about'
 import { Experience } from '@/sections/experience'
 import { Apart } from '@/sections/apart'
+import { Music } from '@/sections/music'
 import { Skills } from '@/sections/skills'
 import { Contact } from '@/sections/contact'
 
@@ -16,6 +17,7 @@ export function HomePage() {
       <About />
       <Experience />
       <Apart />
+      <Music />
       <Skills />
       <Contact />
     </>
