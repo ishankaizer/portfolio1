@@ -89,7 +89,7 @@ export function Contact() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-1 text-sm text-ink-soft transition-colors hover:text-brand-strong"
+                    className="group inline-flex items-center gap-1 py-1.5 text-sm text-ink-soft transition-colors hover:text-brand-strong"
                   >
                     {s.label}
                     <ArrowUpRight className="size-3.5 opacity-60 transition-opacity group-hover:opacity-100" />

@@ -27,7 +27,7 @@ export function Footer() {
                 href={s.href}
                 target={s.href.startsWith('http') ? '_blank' : undefined}
                 rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="group inline-flex items-center gap-1.5 text-sm text-ink-soft transition-colors hover:text-brand-strong"
+                className="group inline-flex items-center gap-1.5 py-2 text-sm text-ink-soft transition-colors hover:text-brand-strong"
               >
                 <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink-mute">
                   {s.label}
@@ -49,7 +49,7 @@ export function Footer() {
             <Wordmark className="text-base" />
             <a
               href="#top"
-              className="font-mono text-xs uppercase tracking-[0.08em] text-ink-mute transition-colors hover:text-ink"
+              className="inline-block py-2 font-mono text-xs uppercase tracking-[0.08em] text-ink-mute transition-colors hover:text-ink"
             >
               Back to top ↑
             </a>

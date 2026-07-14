@@ -61,7 +61,6 @@ function CaseStudyContent({ project }: { project: Project & { study: NonNullable
         title={project.title}
         description={study.hook}
         path={`/work/${project.slug}`}
-        type="article"
       />
       <ReadingProgress />
 

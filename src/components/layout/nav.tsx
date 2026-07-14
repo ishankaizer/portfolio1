@@ -70,13 +70,13 @@ export function Nav() {
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
+          <ThemeToggle className="size-11" />
           <button
             type="button"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
-            className="inline-grid size-9 place-items-center rounded-md border border-hairline text-ink"
+            className="inline-grid size-11 place-items-center rounded-md border border-hairline text-ink"
           >
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
