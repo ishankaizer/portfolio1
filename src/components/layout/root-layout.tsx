@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Outlet, ScrollRestoration } from 'react-router-dom'
 import { Nav } from './nav'
 import { Footer } from './footer'
@@ -14,7 +15,9 @@ export function RootLayout() {
       <span id="top" aria-hidden />
       <Nav />
       <main id="main">
-        <Outlet />
+        <Suspense fallback={<div className="min-h-[60svh]" aria-hidden />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
       <ScrollRestoration />

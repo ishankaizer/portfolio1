@@ -15,7 +15,7 @@
   --paper-2: #f4eee6;
   --ink: #17141b;
   --ink-soft: #4a4453;
-  --ink-mute: #837b8c;
+  --ink-mute: #6b6475; /* meets WCAG AA (>=4.5:1) on paper for small text */
   --hairline: #e6ddd1;
   --brand: #d8235a;          /* raspberry, disciplined */
   --brand-strong: #b0104a;   /* meets AA for links/hover on paper */
