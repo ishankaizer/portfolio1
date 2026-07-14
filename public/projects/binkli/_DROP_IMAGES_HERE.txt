@@ -1,0 +1,11 @@
+Images for the "binkli" project. Drop files here:
+
+  cover.jpg   the thumbnail + case-study hero. ~1600x1200 (4:3). Required for a real thumbnail.
+  01.jpg      first process / detail image  (wide, ~1600px)
+  02.jpg      second process image
+  03.jpg      ... add as many as you like
+
+Notes:
+- JPG or WebP both fine. Keep each under ~500KB if you can.
+- Until cover.jpg exists, a designed placeholder shows automatically (nothing breaks).
+- Tell me the filenames + a one-line caption for each and I'll wire them into the case study.

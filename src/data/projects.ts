@@ -15,7 +15,7 @@ const base: Omit<Project, 'study'>[] = [
     year: '2024',
     role: 'UX Research & Product Design',
     featured: true,
-    cover: '/projects/park-it.jpg',
+    cover: '/projects/park-it/cover.jpg',
   },
   {
     slug: 'wellbell',
@@ -25,7 +25,7 @@ const base: Omit<Project, 'study'>[] = [
     year: '2023',
     role: 'Industrial & Interaction Design',
     featured: true,
-    cover: '/projects/wellbell.jpg',
+    cover: '/projects/wellbell/cover.jpg',
   },
   {
     slug: 'materia',
@@ -35,7 +35,7 @@ const base: Omit<Project, 'study'>[] = [
     year: '2025',
     role: 'Product Design & Front-end',
     featured: true,
-    cover: '/projects/materia.jpg',
+    cover: '/projects/materia/cover.jpg',
   },
   {
     slug: 'levelstretch',
@@ -45,7 +45,7 @@ const base: Omit<Project, 'study'>[] = [
     year: '2024',
     role: 'Industrial Design & IoT',
     featured: true,
-    cover: '/projects/levelstretch.jpg',
+    cover: '/projects/levelstretch/cover.jpg',
   },
   {
     slug: 'binkli',
@@ -56,7 +56,7 @@ const base: Omit<Project, 'study'>[] = [
     role: 'Design & Build',
     featured: true,
     external: 'https://binkli.vercel.app',
-    cover: '/projects/binkli.jpg',
+    cover: '/projects/binkli/cover.jpg',
   },
 ]
 
