@@ -58,11 +58,38 @@ const base: Omit<Project, 'study'>[] = [
     external: 'https://binkli.vercel.app',
     cover: '/projects/binkli/cover.jpg',
   },
+  {
+    slug: 'miscellaneous',
+    title: 'Miscellaneous',
+    tagline: 'Packaging, posters, stickers and other graphic work, including the Palkia blind-box series.',
+    disciplines: ['Branding', 'Graphic Design'],
+    year: 'Various',
+    role: 'Graphic & Packaging Design',
+    featured: true,
+    cover: '/projects/miscellaneous/cover.jpg',
+  },
 ]
+
+/** Number of rendered deck slides per project (public/projects/<slug>/slides). */
+const SLIDE_COUNTS: Record<string, number> = {
+  'park-it': 11,
+  wellbell: 6,
+  levelstretch: 7,
+  miscellaneous: 11,
+}
+
+function slidePaths(slug: string): string[] {
+  const n = SLIDE_COUNTS[slug] ?? 0
+  return Array.from(
+    { length: n },
+    (_, i) => `/projects/${slug}/slides/${String(i + 1).padStart(2, '0')}.webp`,
+  )
+}
 
 export const projects: Project[] = base.map((p) => ({
   ...p,
   study: caseStudyBySlug[p.slug],
+  slides: slidePaths(p.slug),
 }))
 
 export function getProject(slug: string): Project | undefined {

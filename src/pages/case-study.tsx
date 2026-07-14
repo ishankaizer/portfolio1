@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ProjectCover } from '@/components/common/project-cover'
 import { CaseMediaFrame } from '@/components/case/case-media'
+import { SlideGallery } from '@/components/case/slide-gallery'
 import { ReadingProgress } from '@/components/common/reading-progress'
 import { NotFoundPage } from './not-found'
 
@@ -195,6 +196,9 @@ function CaseStudyContent({ project }: { project: Project & { study: NonNullable
           </div>
         </Container>
 
+        {/* The full deck */}
+        <SlideGallery slides={project.slides ?? []} projectTitle={project.title} />
+
         {/* Prev / next */}
         <Container className="pb-16">
           <nav
@@ -259,25 +263,53 @@ export function CaseStudyPage() {
 
   if (!project) return <NotFoundPage />
 
-  // A project without a written study (e.g. Binkli) links out instead.
+  // Projects without a written study: show the deck (Miscellaneous),
+  // or link out (Binkli).
   if (!project.study) {
+    const hasSlides = (project.slides?.length ?? 0) > 0
     return (
       <>
         <Seo title={project.title} description={project.tagline} path={`/work/${project.slug}`} />
-        <Container className="py-24 text-center">
-          <h1 className="font-display text-4xl font-black uppercase tracking-tight text-ink">
-            {project.title}
-          </h1>
-          <p className="mx-auto mt-4 max-w-md text-ink-soft">{project.tagline}</p>
-          {project.external && (
-            <Button asChild variant="brand" className="mt-8">
-              <a href={project.external} target="_blank" rel="noopener noreferrer">
-                Visit live site
-                <ArrowUpRight className="size-4" />
-              </a>
-            </Button>
+        <article>
+          <header className="pt-10 pb-8 sm:pt-14">
+            <Container>
+              <Link
+                to="/#work"
+                className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.1em] text-ink-mute transition-colors hover:text-ink"
+              >
+                <ArrowLeft className="size-3.5" />
+                All work
+              </Link>
+              <div className="mt-8 flex flex-wrap items-center gap-2">
+                {project.disciplines.map((d) => (
+                  <Badge key={d}>{d}</Badge>
+                ))}
+                <span className="font-mono text-xs text-ink-mute">&middot; {project.year}</span>
+              </div>
+              <h1 className="mt-5 text-balance font-display text-4xl font-black uppercase leading-[0.98] tracking-tight text-ink sm:text-6xl">
+                {project.title}
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">
+                {project.tagline}
+              </p>
+              {project.external && (
+                <Button asChild variant="brand" className="mt-8">
+                  <a href={project.external} target="_blank" rel="noopener noreferrer">
+                    Visit live site
+                    <ArrowUpRight className="size-4" />
+                  </a>
+                </Button>
+              )}
+            </Container>
+          </header>
+          {hasSlides && (
+            <SlideGallery
+              slides={project.slides ?? []}
+              projectTitle={project.title}
+              eyebrow="The work"
+            />
           )}
-        </Container>
+        </article>
       </>
     )
   }

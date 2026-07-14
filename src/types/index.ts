@@ -3,6 +3,8 @@ export type Discipline =
   | 'Industrial Design'
   | 'Product'
   | 'Visualization'
+  | 'Branding'
+  | 'Graphic Design'
 
 export interface MetricStat {
   value: string
@@ -67,10 +69,12 @@ export interface Project {
   featured: boolean
   /** Live/external destination (opens in a new tab), used when no case study. */
   external?: string
-  /** /projects/<slug>.jpg by convention; falls back to a generated cover. */
+  /** /projects/<slug>/cover.jpg by convention; falls back to a generated cover. */
   cover?: string
   /** Optional long-form case study. */
   study?: CaseStudy
+  /** Rendered deck slides for the "full presentation" gallery. */
+  slides?: string[]
 }
 
 export interface ExperienceRole {
