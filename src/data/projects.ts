@@ -1,11 +1,12 @@
 import type { Project } from '@/types'
+import { caseStudyBySlug } from './case-studies'
 
 /**
- * Card + case-study metadata lives here; long-form `study` content is
- * attached per project. Order defines the selected-work sequence.
+ * Card metadata lives here; long-form `study` content is attached from
+ * ./case-studies by slug. Order defines the selected-work sequence.
  * Cover images resolve from /public/projects/<slug>.jpg when present.
  */
-export const projects: Project[] = [
+const base: Omit<Project, 'study'>[] = [
   {
     slug: 'park-it',
     title: 'Park IT',
@@ -59,11 +60,24 @@ export const projects: Project[] = [
   },
 ]
 
+export const projects: Project[] = base.map((p) => ({
+  ...p,
+  study: caseStudyBySlug[p.slug],
+}))
+
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug)
 }
 
 export const featuredProjects = projects.filter((p) => p.featured)
 
-/** Projects that have a readable case study (drive the /work/:slug routes). */
+/** Projects with a readable case study — drives /work/:slug and prev/next. */
 export const caseStudies = projects.filter((p) => p.study)
+
+export function getAdjacentCaseStudies(slug: string) {
+  const i = caseStudies.findIndex((p) => p.slug === slug)
+  if (i === -1) return { prev: undefined, next: undefined }
+  const prev = i > 0 ? caseStudies[i - 1] : caseStudies[caseStudies.length - 1]
+  const next = i < caseStudies.length - 1 ? caseStudies[i + 1] : caseStudies[0]
+  return { prev, next }
+}
