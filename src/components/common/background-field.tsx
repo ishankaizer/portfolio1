@@ -1,6 +1,6 @@
 /**
  * Site-wide atmosphere: irregular, organic colour fields (blurred SVG
- * blobs — not ellipses), a faint tonal drift, and fine film grain, so
+ * blobs, not ellipses), a faint tonal drift, and fine film grain, so
  * warm paper reads as a real material rather than a flat fill. Kept soft
  * and behind all content so it never competes with the work.
  */
@@ -10,7 +10,7 @@ const GRAIN =
 export function BackgroundField() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      {/* organic colour fields — irregular blurred blobs */}
+      {/* organic colour fields, irregular blurred blobs */}
       <svg
         className="absolute inset-0 h-full w-full opacity-100 dark:opacity-[0.55]"
         viewBox="0 0 1600 1000"

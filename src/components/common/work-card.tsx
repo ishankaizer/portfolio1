@@ -15,7 +15,7 @@ interface WorkCardProps {
 export function WorkCard({ project, index, className, priority }: WorkCardProps) {
   const isExternal = Boolean(project.external)
   const href = isExternal ? project.external! : `/work/${project.slug}`
-  const label = `${project.title} — ${isExternal ? 'open live site' : 'read case study'}`
+  const label = `${project.title}, ${isExternal ? 'open live site' : 'read case study'}`
 
   const inner = (
     <>

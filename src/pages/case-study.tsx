@@ -80,7 +80,7 @@ function CaseStudyContent({ project }: { project: Project & { study: NonNullable
               {project.disciplines.map((d) => (
                 <Badge key={d}>{d}</Badge>
               ))}
-              <span className="font-mono text-xs text-ink-mute">— {project.year}</span>
+              <span className="font-mono text-xs text-ink-mute">&middot; {project.year}</span>
             </div>
 
             <h1 className="mt-5 text-balance font-display text-4xl font-black uppercase leading-[0.98] tracking-tight text-ink sm:text-6xl">
@@ -113,7 +113,7 @@ function CaseStudyContent({ project }: { project: Project & { study: NonNullable
           </dl>
         </Container>
 
-        {/* Body — centred reading column, media breaks out wider */}
+        {/* Body: centred reading column, media breaks out wider */}
         <Container className="py-16">
           <div className="mx-auto flex max-w-3xl flex-col gap-16">
             <Block label="The problem" title="Why this needed solving">

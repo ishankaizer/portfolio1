@@ -4,13 +4,13 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   DESIGN TOKENS — "The Working Drawing".
+   DESIGN TOKENS, "The Working Drawing".
    Warm draft paper + graphite, a non-repro drafting grid, and one
    red-pencil marker accent. The token API is stable (--ink, --paper,
    --brand ...) so components keep working; only the material changes.
    ============================================================ */
 :root {
-  /* materials — light */
+  /* materials, light */
   --paper: #ece4d3;          /* warm draft paper */
   --paper-2: #e4dbc8;
   --ink: #23201a;            /* graphite */
@@ -117,7 +117,7 @@
 
   --font-sans: "Archivo Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: "Archivo Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  /* serif is intentionally retired — the language forbids serif garnish */
+  /* serif is intentionally retired, the language forbids serif garnish */
   --font-serif: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
@@ -173,7 +173,7 @@
     max-width: 68ch;
   }
 
-  /* The working grid — the spatial system everything pins to. */
+  /* The working grid, the spatial system everything pins to. */
   .draft-grid {
     background-image:
       linear-gradient(var(--color-grid) 1px, transparent 1px),
@@ -189,7 +189,7 @@
   }
 }
 
-/* Machine easing — mechanical, torqued, never sprung. */
+/* Machine easing, mechanical, torqued, never sprung. */
 @theme {
   --ease-mech: cubic-bezier(0.16, 0.84, 0.3, 1);
 }

@@ -9,7 +9,7 @@ import { site } from '@/data/site'
 const reasons = [
   {
     title: 'Two disciplines, one hire',
-    body: 'Industrial design and UX/UI in the same person — I can own a product from physical form to shipped interface without the handoff gap.',
+    body: 'Industrial design and UX/UI in the same person. I can own a product from physical form to shipped interface without the handoff gap.',
   },
   {
     title: 'I actually ship',
@@ -17,7 +17,7 @@ const reasons = [
   },
   {
     title: 'I lift the team',
-    body: 'Led a 40-person design team and automate production grind with Python — I raise the whole team’s velocity, not just my own output.',
+    body: 'Led a 40-person design team and automate production grind with Python. I raise the whole team’s velocity, not just my own output.',
   },
 ]
 

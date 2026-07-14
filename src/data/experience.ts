@@ -43,7 +43,7 @@ export const experience: ExperienceRole[] = [
   },
   {
     when: '2022 – 2026',
-    role: 'B.Des — Industrial Design',
+    role: 'B.Des, Industrial Design',
     org: 'Vellore Institute of Technology',
     points: [
       'Final year. Product design, visualization and UX/UI.',

@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 
-/** Quiet, confident wordmark — weight contrast carries it, no ornament. */
+/** Quiet, confident wordmark, weight contrast carries it, no ornament. */
 export function Wordmark({ className }: { className?: string }) {
   return (
     <span

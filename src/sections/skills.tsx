@@ -17,7 +17,7 @@ export function Skills() {
             </span>
           </>
         }
-        description="Comfortable from CAD to front-end — and I write Python to delete the repetitive parts of design production."
+        description="Comfortable from CAD to front-end, and I write Python to delete the repetitive parts of design production."
       />
 
       <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-3">

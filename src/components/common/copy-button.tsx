@@ -21,7 +21,7 @@ export function CopyButton({ value, label, className }: CopyButtonProps) {
       window.clearTimeout(timer.current)
       timer.current = window.setTimeout(() => setCopied(false), 1800)
     } catch {
-      /* clipboard blocked — no-op, the value is still visible */
+      /* clipboard blocked, no-op, the value is still visible */
     }
   }
 

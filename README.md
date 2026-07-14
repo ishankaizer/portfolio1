@@ -1,15 +1,15 @@
-# Ishan Kaizer — Portfolio
+# Ishan Kaizer, Portfolio
 
 Product · UX/UI · Industrial Design portfolio. Built to convince a hiring
-manager, in 30–60 seconds, that this is an exceptional designer — timeless
+manager, in 30–60 seconds, that this is an exceptional designer, timeless
 editorial craft, optimized for the hire, not for design-community applause.
 
 ## Stack
 
 - **React 19** + **TypeScript** + **Vite**
 - **Tailwind CSS v4** (`@tailwindcss/vite`) with a token-based design system
-- **Framer Motion** — restrained, reduced-motion-aware
-- **React Router** — home + `/work/:slug` case studies
+- **Framer Motion**, restrained, reduced-motion-aware
+- **React Router**, home + `/work/:slug` case studies
 - **shadcn/ui** primitives (Button, Badge) on the brand tokens
 - **Lucide** icons
 
@@ -43,16 +43,16 @@ shadcn's semantic tokens, so both themes and every primitive stay in sync.
 
 ## Content
 
-All copy and project data live in `src/data`. Edit content there — no
+All copy and project data live in `src/data`. Edit content there, no
 component changes needed.
 
 ## Drop-in assets (replace placeholders)
 
-- `public/resume.pdf` — résumé (linked from the nav + hero)
-- `public/about/portrait.jpg` — portrait (monogram shows until then)
-- `public/projects/<slug>.jpg` — project covers (`park-it`, `wellbell`,
+- `public/resume.pdf`, résumé (linked from the nav + hero)
+- `public/about/portrait.jpg`, portrait (monogram shows until then)
+- `public/projects/<slug>.jpg`, project covers (`park-it`, `wellbell`,
   `materia`, `levelstretch`, `binkli`) and per-section case-study visuals
-- `public/og.png` — 1200×630 social share image
+- `public/og.png`, 1200×630 social share image
 
 ## Deploy
 

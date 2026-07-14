@@ -1,4 +1,4 @@
-// Generates public/og.png (1200x630) — the social share card.
+// Generates public/og.png (1200x630), the social share card.
 // Run: node scripts/gen-og.mjs
 import { Resvg } from '@resvg/resvg-js'
 import { writeFileSync, mkdirSync } from 'node:fs'
@@ -23,7 +23,7 @@ const svg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http:/
   </defs>
   <rect width="1200" height="630" fill="url(#glow)"/>
 
-  <text x="90" y="132" font-family="Arial, sans-serif" font-size="24" letter-spacing="5" fill="${inkMute}">PORTFOLIO &#8212; 2026</text>
+  <text x="90" y="132" font-family="Arial, sans-serif" font-size="24" letter-spacing="5" fill="${inkMute}">PORTFOLIO &#183; 2026</text>
 
   <text x="84" y="300" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="164" letter-spacing="-6" fill="${ink}">Ishan</text>
   <text x="84" y="452" font-family="Georgia, serif" font-style="italic" font-size="168" fill="${brand}">Kaizer</text>

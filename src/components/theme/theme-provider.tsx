@@ -15,7 +15,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     try {
       localStorage.setItem('theme', theme)
     } catch {
-      /* storage unavailable — fall back to in-memory only */
+      /* storage unavailable, fall back to in-memory only */
     }
   }, [theme])
 

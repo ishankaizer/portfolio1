@@ -2,7 +2,7 @@ import { Container } from '@/components/common/container'
 import { Assemble } from '@/components/draft/assemble'
 import { site } from '@/data/site'
 
-/** His breadth — shown as real information, not a themed parts list. */
+/** His breadth, shown as real information, not a themed parts list. */
 const disciplines = [
   'Industrial Design',
   'Product Design',
@@ -29,7 +29,7 @@ export function Hero() {
 
           <Assemble from="up" delay={0.06}>
             <h1 className="mt-6 max-w-[20ch] font-display text-[clamp(2.4rem,7vw,5.6rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.03em] text-ink">
-              I draw the <span className="text-brand">whole thing</span> — the
+              I draw the <span className="text-brand">whole thing</span>: the
               object, the interface, and the code that runs it.
             </h1>
           </Assemble>

@@ -44,7 +44,7 @@ export function Nav() {
       )}
     >
       <Container className="flex h-16 items-center justify-between gap-4">
-        <Link to="/" aria-label={`${site.name} — home`} className="shrink-0">
+        <Link to="/" aria-label={`${site.name}, home`} className="shrink-0">
           <Wordmark />
         </Link>
 

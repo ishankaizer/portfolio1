@@ -30,7 +30,7 @@ const base: Omit<Project, 'study'>[] = [
   {
     slug: 'materia',
     title: 'Materia',
-    tagline: 'A material-discovery platform for interior designers — shipped as a working React product.',
+    tagline: 'A material-discovery platform for interior designers, shipped as a working React product.',
     disciplines: ['Product', 'UX/UI', 'Visualization'],
     year: '2025',
     role: 'Product Design & Front-end',
@@ -50,7 +50,7 @@ const base: Omit<Project, 'study'>[] = [
   {
     slug: 'binkli',
     title: 'Binkli',
-    tagline: 'A retro image-effects lab — halftone, duotone, riso and glitch, live in the browser.',
+    tagline: 'A retro image-effects lab: halftone, duotone, riso and glitch, live in the browser.',
     disciplines: ['UX/UI'],
     year: '2025',
     role: 'Design & Build',
@@ -71,7 +71,7 @@ export function getProject(slug: string): Project | undefined {
 
 export const featuredProjects = projects.filter((p) => p.featured)
 
-/** Projects with a readable case study — drives /work/:slug and prev/next. */
+/** Projects with a readable case study. Drives /work/:slug and prev/next. */
 export const caseStudies = projects.filter((p) => p.study)
 
 export function getAdjacentCaseStudies(slug: string) {

@@ -34,7 +34,7 @@ export function ProjectCover({
       {showImage ? (
         <img
           src={src}
-          alt={`${title} — project cover`}
+          alt={`${title} project cover`}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
           onError={() => setFailed(true)}

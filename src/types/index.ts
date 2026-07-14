@@ -51,7 +51,7 @@ export interface CaseStudy {
     stats?: MetricStat[]
     body: string[]
   }
-  /** What he'd do differently — signals seniority. */
+  /** What he'd do differently, signals seniority. */
   reflection: string[]
 }
 
@@ -65,7 +65,7 @@ export interface Project {
   role: string
   /** Shown in the selected-work grid on the homepage. */
   featured: boolean
-  /** Live/external destination (opens in a new tab) — used when no case study. */
+  /** Live/external destination (opens in a new tab), used when no case study. */
   external?: string
   /** /projects/<slug>.jpg by convention; falls back to a generated cover. */
   cover?: string

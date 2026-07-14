@@ -19,7 +19,7 @@ export function SelectedWork() {
             not wide.
           </>
         }
-        description="A few end-to-end pieces across mobile UX, connected hardware and shipped software. Each one is a full story — problem, decisions and outcome."
+        description="A few end-to-end pieces across mobile UX, connected hardware and shipped software. Each one is a full story: problem, decisions and outcome."
       />
 
       <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2">
