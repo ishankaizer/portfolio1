@@ -4,74 +4,78 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   DESIGN TOKENS — timeless editorial system.
-   Warm paper ground, near-black ink, one disciplined raspberry
-   accent. Both themes are first-class. Semantic (shadcn) tokens
-   map onto the brand palette so every ui/ primitive inherits it.
+   DESIGN TOKENS — "The Working Drawing".
+   Warm draft paper + graphite, a non-repro drafting grid, and one
+   red-pencil marker accent. The token API is stable (--ink, --paper,
+   --brand ...) so components keep working; only the material changes.
    ============================================================ */
 :root {
-  /* brand palette — light */
-  --paper: #fbf7f2;
-  --paper-2: #f4eee6;
-  --ink: #17141b;
-  --ink-soft: #4a4453;
-  --ink-mute: #6b6475; /* meets WCAG AA (>=4.5:1) on paper for small text */
-  --hairline: #e6ddd1;
-  --brand: #d8235a;          /* raspberry, disciplined */
-  --brand-strong: #b0104a;   /* meets AA for links/hover on paper */
-  --brand-tint: #fff0f4;
+  /* materials — light */
+  --paper: #ece4d3;          /* warm draft paper */
+  --paper-2: #e4dbc8;
+  --ink: #23201a;            /* graphite */
+  --ink-soft: #574f43;
+  --ink-mute: #6d6454;       /* meets WCAG AA on paper */
+  --hairline: #cfc6b2;
+  --brand: #d5392a;          /* red-pencil marker */
+  --brand-strong: #b32a1d;   /* AA for small text/links on paper */
+  --brand-tint: #f0d9d2;
+  --grid: rgba(92, 112, 122, 0.16);        /* non-repro drafting blue-grey */
+  --grid-strong: rgba(92, 112, 122, 0.32);
 
   /* shadcn semantic tokens */
   --background: var(--paper);
   --foreground: var(--ink);
-  --card: #ffffff;
+  --card: #f1ebde;
   --card-foreground: var(--ink);
-  --popover: #ffffff;
+  --popover: #f1ebde;
   --popover-foreground: var(--ink);
   --primary: var(--ink);
-  --primary-foreground: #fbf7f2;
+  --primary-foreground: #f1ebde;
   --secondary: var(--paper-2);
   --secondary-foreground: var(--ink);
   --muted: var(--paper-2);
   --muted-foreground: var(--ink-mute);
   --accent: var(--paper-2);
   --accent-foreground: var(--ink);
-  --destructive: #b0104a;
+  --destructive: var(--brand-strong);
   --destructive-foreground: #ffffff;
   --border: var(--hairline);
   --input: var(--hairline);
   --ring: var(--brand);
 
-  --radius: 0.625rem;
+  --radius: 0.25rem;
 }
 
 .dark {
-  --paper: #131017;
-  --paper-2: #1c1822;
-  --ink: #f3eee7;
-  --ink-soft: #c7c0ce;
-  --ink-mute: #928aa0;
-  --hairline: #2a2532;
-  --brand: #ff5c8a;
-  --brand-strong: #ff89ac;
-  --brand-tint: #251320;
+  --paper: #16140f;
+  --paper-2: #1e1b14;
+  --ink: #ece4d3;
+  --ink-soft: #b8af9d;
+  --ink-mute: #8a8171;
+  --hairline: #332f26;
+  --brand: #ff5a44;
+  --brand-strong: #ff8a76;
+  --brand-tint: #351a14;
+  --grid: rgba(150, 170, 182, 0.11);
+  --grid-strong: rgba(150, 170, 182, 0.22);
 
   --background: var(--paper);
   --foreground: var(--ink);
-  --card: #1a1620;
+  --card: #201d15;
   --card-foreground: var(--ink);
-  --popover: #1a1620;
+  --popover: #201d15;
   --popover-foreground: var(--ink);
   --primary: var(--ink);
-  --primary-foreground: #131017;
+  --primary-foreground: #16140f;
   --secondary: var(--paper-2);
   --secondary-foreground: var(--ink);
   --muted: var(--paper-2);
   --muted-foreground: var(--ink-mute);
   --accent: var(--paper-2);
   --accent-foreground: var(--ink);
-  --destructive: #ff5c8a;
-  --destructive-foreground: #131017;
+  --destructive: var(--brand);
+  --destructive-foreground: #16140f;
   --border: var(--hairline);
   --input: var(--hairline);
   --ring: var(--brand);
@@ -98,7 +102,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* brand aliases → text-brand, bg-paper, border-hairline, etc. */
+  /* material aliases → text-ink, bg-paper, text-brand, border-hairline… */
   --color-paper: var(--paper);
   --color-paper-2: var(--paper-2);
   --color-ink: var(--ink);
@@ -108,15 +112,18 @@
   --color-brand: var(--brand);
   --color-brand-strong: var(--brand-strong);
   --color-brand-tint: var(--brand-tint);
+  --color-grid: var(--grid);
+  --color-grid-strong: var(--grid-strong);
 
   --font-sans: "Archivo Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: "Archivo Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  /* serif is intentionally retired — the language forbids serif garnish */
+  --font-serif: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
+  --radius-sm: calc(var(--radius) - 1px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
   --radius-xl: calc(var(--radius) + 4px);
 }
 
@@ -161,9 +168,28 @@
   }
 }
 
-/* Editorial helpers used across long-form case-study prose. */
 @layer components {
   .prose-measure {
     max-width: 68ch;
   }
+
+  /* The working grid — the spatial system everything pins to. */
+  .draft-grid {
+    background-image:
+      linear-gradient(var(--color-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+    background-size: var(--grid-size, 32px) var(--grid-size, 32px);
+    background-position: var(--grid-origin-x, 0) var(--grid-origin-y, 0);
+  }
+  .draft-grid-strong {
+    background-image:
+      linear-gradient(var(--color-grid-strong) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-grid-strong) 1px, transparent 1px);
+    background-size: var(--grid-size, 32px) var(--grid-size, 32px);
+  }
+}
+
+/* Machine easing — mechanical, torqued, never sprung. */
+@theme {
+  --ease-mech: cubic-bezier(0.16, 0.84, 0.3, 1);
 }

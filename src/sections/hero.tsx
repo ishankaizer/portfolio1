@@ -1,117 +1,119 @@
-import { motion, useReducedMotion, type Variants } from 'framer-motion'
-import { ArrowDown, ArrowUpRight } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { Container } from '@/components/common/container'
+import { Assemble } from '@/components/draft/assemble'
 import { site } from '@/data/site'
 
-const container: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
-}
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 16, filter: 'blur(6px)' },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.65, ease: [0.2, 0.7, 0.2, 1] },
-  },
-}
-
-const recentlyAt = ['Material Depot', 'Prime Events', 'Gravitas ’25', 'VIT']
+/** The seven materials one mind works in — the hero's bill of materials. */
+const disciplines = [
+  'Industrial Design',
+  'Product Design',
+  'UI / UX',
+  'Visualization',
+  'Branding',
+  'AI Workflows',
+  'Frontend',
+]
 
 export function Hero() {
-  const reduce = useReducedMotion()
-  const motionProps = reduce
-    ? {}
-    : { variants: container, initial: 'hidden' as const, animate: 'show' as const }
-  const childProps = reduce ? {} : { variants: item }
-
   return (
     <section
       id="hero"
-      className="relative overflow-hidden border-b border-hairline"
-      style={{
-        background:
-          'radial-gradient(80% 90% at 92% -20%, color-mix(in oklab, var(--brand) 8%, transparent), transparent 60%)',
-      }}
+      className="draft-grid relative overflow-hidden border-b border-hairline"
+      style={{ '--grid-size': '32px' } as React.CSSProperties}
     >
       <Container>
-        <motion.div
-          {...motionProps}
-          className="flex min-h-[calc(100svh-4rem)] flex-col justify-center py-20"
-        >
-          <motion.p
-            {...childProps}
-            className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs uppercase tracking-[0.16em] text-ink-mute"
+        <div className="relative flex min-h-[calc(100svh-4rem)] flex-col justify-center py-16">
+          {/* origin marker — the grid is real, and this is 0,0 */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -top-1 left-0 font-mono text-[10px] tracking-wider text-ink-mute"
           >
-            <span className="inline-flex items-center gap-2">
-              <span className="relative flex size-2">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-brand/60" />
-                <span className="relative inline-flex size-2 rounded-full bg-brand" />
-              </span>
-              {site.availability}
-            </span>
-            <span aria-hidden className="text-hairline">/</span>
-            <span>{site.location}</span>
-          </motion.p>
+            <span className="text-brand">+</span> 0,0
+          </span>
 
-          <motion.h1
-            {...childProps}
-            className="mt-6 max-w-[16ch] text-balance font-display text-[clamp(2.6rem,8vw,6rem)] font-black uppercase leading-[0.95] tracking-[-0.02em] text-ink"
-          >
-            I design things you{' '}
-            <span className="font-serif font-normal normal-case italic text-brand">
-              touch
-            </span>{' '}
-            &amp; screens you{' '}
-            <span className="font-serif font-normal normal-case italic text-brand">
-              tap
-            </span>
-            .
-          </motion.h1>
+          {/* machine header — the sheet's identity */}
+          <Assemble from="down">
+            <div className="flex items-center gap-3 pt-8 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-ink-mute">
+              <span className="border border-ink-mute/40 px-1.5 py-0.5">General arrangement</span>
+              <span aria-hidden className="h-px flex-1 bg-hairline" />
+              <span className="hidden sm:inline">Sheet 00 / 05</span>
+            </div>
+          </Assemble>
 
-          <motion.p
-            {...childProps}
-            className="mt-7 max-w-xl text-lg leading-relaxed text-ink-soft sm:text-xl"
-          >
-            {site.intro} From 3D form to shipped software — final-year Industrial
-            Design at VIT.
-          </motion.p>
+          {/* the hand — a human statement, in his own voice */}
+          <h1 className="mt-8 max-w-[19ch] font-display text-[clamp(2.3rem,7.2vw,5.8rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.03em] text-ink">
+            I draw the <span className="text-brand">whole thing</span> — the object, the interface, and the code that runs it.
+          </h1>
 
-          <motion.div {...childProps} className="mt-9 flex flex-wrap items-center gap-3">
-            <Button asChild variant="brand" size="lg">
-              <a href="#work">
-                View selected work
-                <ArrowDown className="size-4" />
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <a href={site.resumeUrl} target="_blank" rel="noopener noreferrer">
-                Résumé
-                <ArrowUpRight className="size-4" />
-              </a>
-            </Button>
-          </motion.div>
-
-          <motion.div
-            {...childProps}
-            className="mt-14 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-hairline pt-6"
-          >
-            <span className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-ink-mute">
-              Recently
-            </span>
-            <ul className="flex flex-wrap items-center gap-x-5 gap-y-1">
-              {recentlyAt.map((name) => (
-                <li key={name} className="text-sm font-medium text-ink-soft">
-                  {name}
-                </li>
+          {/* the bill of materials — assembled from seven disciplines */}
+          <div className="mt-12">
+            <div className="flex items-baseline justify-between font-mono text-[0.66rem] uppercase tracking-[0.12em] text-ink-mute">
+              <span>Bill of materials</span>
+              <span>07 disciplines &middot; 01 mind</span>
+            </div>
+            <div aria-hidden className="mt-2 h-px w-full bg-ink/25" />
+            <ol className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4 lg:grid-cols-7">
+              {disciplines.map((d, i) => (
+                <Assemble key={d} from="up" delay={0.04 * i}>
+                  <li className="flex flex-col gap-1.5">
+                    <span className="font-mono text-[0.62rem] font-semibold text-brand">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="text-sm font-semibold leading-tight text-ink">{d}</span>
+                  </li>
+                </Assemble>
               ))}
-            </ul>
-          </motion.div>
-        </motion.div>
+            </ol>
+          </div>
+
+          {/* actions — drawn as annotations, not buttons */}
+          <Assemble from="up" delay={0.1}>
+            <div className="mt-14 flex flex-wrap items-center gap-x-7 gap-y-3">
+              <a
+                href="#work"
+                className="inline-flex items-center gap-2 border border-ink bg-ink px-5 py-2.5 font-mono text-xs uppercase tracking-[0.1em] text-paper transition-colors hover:border-brand hover:bg-brand"
+              >
+                <span aria-hidden>&#9656;</span> Open the drawings
+              </a>
+              <a
+                href={site.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 border-b border-ink/40 pb-0.5 font-mono text-xs uppercase tracking-[0.1em] text-ink transition-colors hover:border-brand hover:text-brand"
+              >
+                Résumé <span aria-hidden>&#8599;</span>
+              </a>
+            </div>
+          </Assemble>
+        </div>
       </Container>
+
+      {/* title block — anchors the sheet, holds the real metadata */}
+      <div className="pointer-events-none absolute bottom-0 right-0 hidden border-l border-t border-ink/30 bg-paper/75 backdrop-blur-sm lg:block">
+        <dl className="grid grid-cols-[auto_auto]">
+          {[
+            ['Project', 'Ishan Kaizer'],
+            ['Location', site.location],
+            ['Status', '2026 — available'],
+            ['Rev', '—'],
+          ].map(([k, v], i) => (
+            <div
+              key={k}
+              className={`contents`}
+            >
+              <dt
+                className={`border-hairline px-3 py-1.5 font-mono text-[0.58rem] uppercase tracking-[0.1em] text-ink-mute ${i < 3 ? 'border-b' : ''}`}
+              >
+                {k}
+              </dt>
+              <dd
+                className={`border-l border-hairline px-3 py-1.5 font-mono text-[0.62rem] font-medium ${i < 3 ? 'border-b' : ''} ${k === 'Status' ? 'text-brand' : 'text-ink'}`}
+              >
+                {v}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </section>
   )
 }
