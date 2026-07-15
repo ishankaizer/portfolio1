@@ -10,7 +10,7 @@ export interface Track {
  * referenced directly rather than re-hosted. To refresh, re-run the fetch.
  */
 export const music = {
-  caption: 'A few records on repeat, if you are after some fresh tunes :)',
+  caption: 'I can’t work without music, so neither should you.',
   tracks: [
   { title: "Addiction", artist: "Vlad Holiday", cover: "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02ba1674c5eaf8ae01acff8c1b" },
   { title: "When You Were Made", artist: "The Growlers", cover: "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02bb09cba8a0ce270c134a59e9" },

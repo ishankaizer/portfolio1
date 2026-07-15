@@ -8,20 +8,25 @@ export function Music() {
   const loop = [...music.tracks, ...music.tracks]
 
   return (
-    <section id="music" className="overflow-hidden border-t border-hairline py-20 sm:py-28">
+    <section
+      id="music"
+      className="overflow-hidden border-t border-hairline py-24 sm:py-32 lg:py-40"
+    >
       <div className="marquee">
-        <ul className="marquee-track px-5">
+        <ul className="marquee-track px-6">
           {loop.map((t, i) => (
             <li
               key={`${t.title}-${i}`}
               data-cursor="grow"
-              className="group/item w-40 shrink-0"
+              className="group/item w-64 shrink-0 sm:w-72"
             >
-              <div className="overflow-hidden rounded-lg border border-hairline transition duration-300 ease-out group-hover/item:scale-[1.05] group-hover/item:border-brand group-hover/item:shadow-xl group-hover/item:[filter:invert(1)]">
+              <div className="overflow-hidden rounded-lg border border-hairline transition duration-300 ease-out group-hover/item:scale-[1.04] group-hover/item:border-brand group-hover/item:shadow-xl group-hover/item:[filter:invert(1)]">
                 <AlbumCover title={t.title} src={t.cover} />
               </div>
-              <p className="mt-2 truncate text-sm font-medium text-ink">{t.title}</p>
-              <p className="truncate font-mono text-[0.62rem] text-ink-mute">{t.artist}</p>
+              <p className="mt-3 truncate text-[0.95rem] font-medium text-ink">
+                {t.title}
+              </p>
+              <p className="truncate font-mono text-xs text-ink-mute">{t.artist}</p>
             </li>
           ))}
         </ul>
@@ -29,8 +34,9 @@ export function Music() {
 
       <Container>
         <Reveal>
-          <p className="mx-auto mt-10 max-w-2xl text-balance text-center font-display text-lg font-bold uppercase tracking-tight text-ink sm:text-xl">
-            {music.caption}
+          <p className="mx-auto mt-20 max-w-[20ch] text-balance text-center font-display text-2xl font-black uppercase leading-[1.12] tracking-tight text-ink sm:mt-24 sm:text-4xl lg:text-[2.75rem]">
+            I can&rsquo;t work without music,{' '}
+            <span className="text-brand">so neither should you.</span>
           </p>
         </Reveal>
       </Container>

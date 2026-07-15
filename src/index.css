@@ -245,9 +245,9 @@
 }
 .marquee-track {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   width: max-content;
-  animation: marquee-scroll 60s linear infinite;
+  animation: marquee-scroll 95s linear infinite;
 }
 .marquee:hover .marquee-track {
   animation-play-state: paused;
