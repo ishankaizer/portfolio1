@@ -283,6 +283,68 @@
   animation: page-enter 0.8s cubic-bezier(0.16, 0.84, 0.3, 1) both;
 }
 
+/* Nav link highlight: a filled box wipes in left-to-right on hover. */
+.nav-highlight {
+  position: relative;
+  isolation: isolate;
+}
+.nav-highlight::before {
+  content: "";
+  position: absolute;
+  inset: -0.4em -0.7em;
+  z-index: -1;
+  border-radius: 0.4rem;
+  background: color-mix(in oklab, var(--color-ink) 12%, transparent);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.5s cubic-bezier(0.2, 1, 0.36, 1);
+}
+.nav-highlight:hover::before,
+.nav-highlight:focus-visible::before {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* CTA button hover: the label scrolls up to an identical copy while the icon
+   flies out top-right and a fresh one slides in from the bottom-left. */
+.cta-marquee {
+  --cta-ease: cubic-bezier(0.16, 1, 0.35, 1);
+}
+.cta-marquee__clip {
+  display: inline-flex;
+  overflow: hidden;
+  line-height: 1.1;
+}
+.cta-marquee__label {
+  display: inline-block;
+  transition: transform 0.5s var(--cta-ease);
+  text-shadow: 0 1.1em 0 currentColor;
+}
+.cta-marquee:hover .cta-marquee__label {
+  transform: translateY(-1.1em);
+}
+.cta-marquee__icon {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  overflow: hidden;
+}
+.cta-marquee__icon svg {
+  transition: transform 0.5s var(--cta-ease);
+}
+.cta-marquee__icon svg:nth-child(2) {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transform: translate(-160%, 160%);
+}
+.cta-marquee:hover .cta-marquee__icon svg:nth-child(1) {
+  transform: translate(160%, -160%);
+}
+.cta-marquee:hover .cta-marquee__icon svg:nth-child(2) {
+  transform: translate(0, 0);
+}
+
 /* Machine easing, mechanical, torqued, never sprung. */
 @theme {
   --ease-mech: cubic-bezier(0.16, 0.84, 0.3, 1);

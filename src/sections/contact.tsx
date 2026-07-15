@@ -72,10 +72,15 @@ export function Contact() {
           </div>
           <div className="flex flex-col gap-3">
             <div className="flex flex-wrap gap-2">
-              <Button asChild variant="brand">
+              <Button asChild variant="brand" className="cta-marquee">
                 <a href={`mailto:${site.email}`}>
-                  <Mail className="size-4" />
-                  Email me
+                  <span className="cta-marquee__clip">
+                    <span className="cta-marquee__label">Email me</span>
+                  </span>
+                  <span className="cta-marquee__icon size-4">
+                    <Mail className="size-4" />
+                    <Mail className="size-4" />
+                  </span>
                 </a>
               </Button>
               <CopyButton value={site.email} label="Copy email" />

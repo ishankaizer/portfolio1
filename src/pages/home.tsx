@@ -1,5 +1,6 @@
 import { Seo } from '@/components/common/seo'
 import { Hero } from '@/sections/hero'
+import { TermsBanner } from '@/sections/terms-banner'
 import { SelectedWork } from '@/sections/selected-work'
 import { About } from '@/sections/about'
 import { Experience } from '@/sections/experience'
@@ -13,6 +14,7 @@ export function HomePage() {
     <>
       <Seo />
       <Hero />
+      <TermsBanner />
       <SelectedWork />
       <Music />
       <About />
