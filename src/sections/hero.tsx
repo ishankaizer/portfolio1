@@ -28,7 +28,7 @@ export function Hero() {
           </Assemble>
 
           <Assemble from="up" delay={0.06}>
-            <h1 className="mt-6 max-w-[20ch] font-display text-[clamp(2.4rem,7vw,5.6rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.03em] text-ink">
+            <h1 className="mt-6 max-w-[20ch] font-display text-[clamp(2.6rem,7.4vw,6rem)] font-medium uppercase leading-[0.9] tracking-[-0.03em] text-ink">
               I draw the <span className="text-brand">whole thing</span>: the
               object, the interface, and the code that runs it.
             </h1>

@@ -27,7 +27,7 @@ export function SectionHeader({
           {eyebrow && <span>{eyebrow}</span>}
         </div>
       )}
-      <Heading className="text-balance font-display text-3xl font-black uppercase leading-[1.04] tracking-tight text-ink sm:text-4xl lg:text-5xl">
+      <Heading className="text-balance font-display text-3xl font-medium uppercase leading-[0.95] tracking-[-0.03em] text-ink sm:text-4xl lg:text-[3.25rem]">
         {title}
       </Heading>
       {description && (

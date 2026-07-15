@@ -37,7 +37,7 @@ export function Music() {
 
       <Container>
         <Reveal>
-          <p className="mx-auto mt-20 max-w-[20ch] text-balance text-center font-display text-2xl font-black uppercase leading-[1.12] tracking-tight text-ink sm:mt-24 sm:text-4xl lg:text-[2.75rem]">
+          <p className="mx-auto mt-20 max-w-[20ch] text-balance text-center font-display text-3xl font-medium uppercase leading-[0.98] tracking-[-0.03em] text-ink sm:mt-24 sm:text-5xl lg:text-[3.5rem]">
             I can&rsquo;t work without music,{' '}
             <span className="text-brand">so neither should you.</span>
           </p>
