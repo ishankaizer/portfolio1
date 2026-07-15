@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 // Self-hosted fonts (no render-blocking third-party request).
-import '@fontsource-variable/space-grotesk/wght.css'
 import '@fontsource-variable/archivo/wght.css'
 import '@fontsource/ibm-plex-mono/400.css'
 import '@fontsource/ibm-plex-mono/500.css'

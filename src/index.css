@@ -116,9 +116,7 @@
   --color-grid-strong: var(--grid-strong);
 
   --font-sans: "Archivo Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  /* Display voice: Space Grotesk, used MONOLOG-style, medium weight at huge
-     size with tight tracking and near-1 line-height. */
-  --font-display: "Space Grotesk Variable", "Archivo Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Archivo Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
   /* serif is intentionally retired, the language forbids serif garnish */
   --font-serif: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
