@@ -1,15 +1,7 @@
-Album covers for the "music I recommend" section. Drop square images named
-by slug (JPG, ~600x600):
+Music tiles are populated from Ishan's public Spotify playlist
+(src/data/music.ts), with cover art referenced from Spotify's CDN.
 
-  gorillaz.jpg
-  demon-days.jpg
-  plastic-beach.jpg
-  the-fall.jpg
-  humanz.jpg
-  the-now-now.jpg
-  song-machine.jpg
-  cracker-island.jpg
-
-Until a file exists, a name tile shows automatically. Edit the list of
-albums in src/data/music.ts (title, year, slug). Note: album artwork is
-copyrighted, so add covers you have the right to use.
+To override a specific cover with a local image, set that track's `cover`
+field in src/data/music.ts to /music/<name>.jpg and drop the file here.
+To refresh the whole list, re-run the Spotify fetch that generated
+src/data/music.ts.

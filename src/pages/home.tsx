@@ -14,10 +14,10 @@ export function HomePage() {
       <Seo />
       <Hero />
       <SelectedWork />
+      <Music />
       <About />
       <Experience />
       <Apart />
-      <Music />
       <Skills />
       <Contact />
     </>
