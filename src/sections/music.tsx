@@ -13,7 +13,10 @@ export function Music() {
       className="overflow-hidden border-t border-hairline py-24 sm:py-32 lg:py-40"
     >
       <div className="marquee">
-        <ul className="marquee-track px-6">
+        <ul
+          className="marquee-track px-6"
+          style={{ '--marquee-duration': `${music.tracks.length * 2}s` } as React.CSSProperties}
+        >
           {loop.map((t, i) => (
             <li
               key={`${t.title}-${i}`}

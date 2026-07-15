@@ -247,7 +247,7 @@
   display: flex;
   gap: 1.5rem;
   width: max-content;
-  animation: marquee-scroll 95s linear infinite;
+  animation: marquee-scroll var(--marquee-duration, 95s) linear infinite;
 }
 .marquee:hover .marquee-track {
   animation-play-state: paused;
