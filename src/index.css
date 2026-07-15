@@ -345,6 +345,49 @@
   transform: translate(0, 0);
 }
 
+/* First-load intro overlay: name reveal, then a compositor-driven swipe up. */
+.preloader {
+  transform: translateY(0);
+  transition: transform 0.85s cubic-bezier(0.16, 0.84, 0.3, 1);
+  will-change: transform;
+}
+.preloader-leaving {
+  transform: translateY(-100%);
+}
+.preloader-word {
+  animation: preloader-word-in 0.7s cubic-bezier(0.16, 0.84, 0.3, 1) 0.1s both;
+}
+.preloader-word-2 {
+  animation-delay: 0.24s;
+}
+@keyframes preloader-word-in {
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preloader {
+    display: none;
+  }
+}
+
+/* Hero placeholder: a slow, gentle float. */
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.hero-float {
+  animation: hero-float 6s ease-in-out infinite;
+}
+
 /* Machine easing, mechanical, torqued, never sprung. */
 @theme {
   --ease-mech: cubic-bezier(0.16, 0.84, 0.3, 1);

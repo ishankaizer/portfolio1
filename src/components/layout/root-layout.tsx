@@ -2,6 +2,7 @@ import { Suspense, useEffect, useState } from 'react'
 import { Outlet, ScrollRestoration } from 'react-router-dom'
 import { BackgroundField } from '@/components/common/background-field'
 import { CustomCursor } from './custom-cursor'
+import { Preloader } from './preloader'
 import { Nav } from './nav'
 import { Footer } from './footer'
 
@@ -17,6 +18,7 @@ export function RootLayout() {
 
   return (
     <>
+      <Preloader />
       <BackgroundField />
       <CustomCursor />
       <div className={entering ? 'page-enter' : undefined}>
