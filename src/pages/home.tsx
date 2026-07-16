@@ -14,10 +14,10 @@ export function HomePage() {
     <>
       <Seo />
       <Hero />
-      <TermsBanner />
-      <SelectedWork />
-      <Music />
       <About />
+      <TermsBanner />
+      <Music />
+      <SelectedWork />
       <Experience />
       <Apart />
       <Skills />

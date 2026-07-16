@@ -78,17 +78,22 @@ function CaseStudyContent({ project }: { project: Project & { study: NonNullable
               All work
             </Link>
 
-            <div className="mt-8 flex flex-wrap items-center gap-2">
+            <div className="cs-fade mt-8 flex flex-wrap items-center gap-2">
               {project.disciplines.map((d) => (
                 <Badge key={d}>{d}</Badge>
               ))}
               <span className="font-mono text-xs text-ink-mute">&middot; {project.year}</span>
             </div>
 
-            <h1 className="mt-5 text-balance font-display text-4xl font-black uppercase leading-[0.98] tracking-tight text-ink sm:text-6xl">
-              {project.title}
+            <h1 className="mt-5 block overflow-hidden pb-[0.08em] text-balance font-display text-4xl font-black uppercase leading-[0.98] tracking-tight text-ink sm:text-6xl">
+              <span className="cs-rise block" style={{ animationDelay: '0.1s' }}>
+                {project.title}
+              </span>
             </h1>
-            <p className="mt-6 max-w-3xl text-balance font-serif text-xl leading-snug text-ink-soft sm:text-2xl">
+            <p
+              className="cs-fade mt-6 max-w-3xl text-balance font-serif text-xl leading-snug text-ink-soft sm:text-2xl"
+              style={{ animationDelay: '0.28s' }}
+            >
               {study.hook}
             </p>
           </Container>
@@ -100,7 +105,7 @@ function CaseStudyContent({ project }: { project: Project & { study: NonNullable
             title={project.title}
             src={project.cover}
             priority
-            className="aspect-[16/9] w-full rounded-xl border border-hairline"
+            className="cs-cover aspect-[16/9] w-full rounded-xl border border-hairline"
           />
 
           <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-6 border-y border-hairline py-8 lg:grid-cols-4">
@@ -281,16 +286,21 @@ export function CaseStudyPage() {
                 <ArrowLeft className="size-3.5" />
                 All work
               </Link>
-              <div className="mt-8 flex flex-wrap items-center gap-2">
+              <div className="cs-fade mt-8 flex flex-wrap items-center gap-2">
                 {project.disciplines.map((d) => (
                   <Badge key={d}>{d}</Badge>
                 ))}
                 <span className="font-mono text-xs text-ink-mute">&middot; {project.year}</span>
               </div>
-              <h1 className="mt-5 text-balance font-display text-4xl font-black uppercase leading-[0.98] tracking-tight text-ink sm:text-6xl">
-                {project.title}
+              <h1 className="mt-5 block overflow-hidden pb-[0.08em] text-balance font-display text-4xl font-black uppercase leading-[0.98] tracking-tight text-ink sm:text-6xl">
+                <span className="cs-rise block" style={{ animationDelay: '0.1s' }}>
+                  {project.title}
+                </span>
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">
+              <p
+                className="cs-fade mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft"
+                style={{ animationDelay: '0.28s' }}
+              >
                 {project.tagline}
               </p>
               {project.external && (

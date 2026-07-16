@@ -1,66 +1,51 @@
-import { Section } from '@/components/common/section'
-import { SectionHeader } from '@/components/common/section-header'
+import { Container } from '@/components/common/container'
 import { Reveal } from '@/components/common/reveal'
 import { Portrait } from '@/components/common/portrait'
-import { CountUp } from '@/components/common/count-up'
 import { about } from '@/data/about'
-
-const facts = [
-  { value: '40', label: 'Design team led at Gravitas' },
-  { value: '3', label: 'Design internships' },
-  { value: '2', label: 'Live React products shipped' },
-]
 
 export function About() {
   return (
-    <Section id="about" band divided>
-      <SectionHeader
-        index="02"
-        eyebrow="About"
-        title={
-          <>
-            An industrial designer who{' '}
-            <span className="font-serif font-normal normal-case italic text-brand">
-              fell for interfaces.
-            </span>
-          </>
-        }
-      />
+    <section
+      id="about"
+      className="relative overflow-hidden border-t border-hairline"
+    >
+      {/* Portrait, behind the text: right-anchored, faded, masked into paper. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 hidden w-[48%] md:block"
+      >
+        <Portrait
+          bleed
+          className="h-full w-full opacity-[0.55] [mask-image:linear-gradient(to_left,black_20%,transparent_92%)] [-webkit-mask-image:linear-gradient(to_left,black_20%,transparent_92%)]"
+        />
+      </div>
 
-      <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-14">
-        <Reveal className="lg:col-span-5">
-          <Portrait className="aspect-[4/5] w-full max-w-sm lg:sticky lg:top-24" />
-        </Reveal>
+      <Container className="relative py-28 sm:py-36 lg:py-44">
+        <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.14em] text-ink-mute">
+          <span className="font-semibold text-brand">01</span>
+          <span aria-hidden className="h-px w-6 bg-hairline" />
+          <span>About</span>
+        </div>
 
-        <div className="flex flex-col gap-8 lg:col-span-7">
+        <div className="mt-14 max-w-4xl sm:mt-20">
           <Reveal>
-            <p className="prose-measure text-balance font-serif text-2xl leading-snug text-ink sm:text-[1.7rem]">
-              {about.tldr}
+            <p className="font-display text-[clamp(2rem,5.4vw,4.25rem)] font-medium leading-[1.03] tracking-[-0.02em] text-ink">
+              {about.statement}
             </p>
           </Reveal>
 
-          <Reveal delay={0.05}>
-            <div className="prose-measure flex flex-col gap-4 text-ink-soft">
-              {about.long.map((p) => (
-                <p key={p.slice(0, 24)}>{p}</p>
-              ))}
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <dl className="grid grid-cols-3 gap-6 border-t border-hairline pt-8">
-              {facts.map((f) => (
-                <div key={f.label} className="flex flex-col gap-1">
-                  <dt className="font-display text-4xl font-black tracking-tight text-brand">
-                    <CountUp value={f.value} />
-                  </dt>
-                  <dd className="text-sm leading-snug text-ink-mute">{f.label}</dd>
-                </div>
-              ))}
-            </dl>
+          <Reveal delay={0.06}>
+            <p className="mt-10 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
+              {about.sub}
+            </p>
           </Reveal>
         </div>
-      </div>
-    </Section>
+
+        {/* Mobile portrait: keep the picture present on small screens. */}
+        <Reveal delay={0.1} className="mt-14 md:hidden">
+          <Portrait className="aspect-[4/5] w-full max-w-xs" />
+        </Reveal>
+      </Container>
+    </section>
   )
 }
