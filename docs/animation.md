@@ -108,6 +108,36 @@ up, the cover clips open with a slow settle. Pure CSS keyframes with
 Applied in `pages/case-study.tsx` to both the full case study header and the
 deck-only header.
 
+### Work index (`components/common/work-index.tsx`)
+
+The Selected Work hover reveal. Hovering a row lights it, recedes its siblings to
+`opacity: 0.3`, and swings the cover in on a panel that trails the cursor.
+
+- **Fine pointer only, and only without reduced motion**
+  (`hoverMode = fine && !reduce`). Otherwise the covers render **inline** in each
+  row instead. This fallback is load bearing: without it the imagery is
+  unreachable on touch. See
+  [`decisions.md`](./decisions.md#d16-selected-work-is-a-hover-reveal-index-not-a-card-grid).
+- The panel trails the pointer via the same rAF lerp as `CustomCursor` (`k = 0.12`).
+- All covers stay mounted and cross-fade by opacity, so switching rows never
+  triggers a fetch flash.
+- Every resting state is the visible one. The dim, the title shift, and the panel
+  are all hover-driven, so with JS dead the list still reads in full.
+- The panel sits at `z-index: 60`: above the nav (50), below the custom cursor
+  (9999) and the route mask (290), and is `pointer-events: none` so it never eats
+  a click.
+
+### Route mask (`components/common/route-mask.tsx`)
+
+The project-open transition. Eight vertical bars scale up to cover the screen,
+the route swaps underneath while covered, then the bars scale away, staggered.
+
+- Every phase change is driven by a hard `setTimeout`, never by `animationend`,
+  so the mask cannot get stuck covering the site (robustness rule 3).
+- Bars are absolutely positioned with a 1px overlap on each edge. Flex sizing let
+  each bar's own compositor layer round independently and open a hairline seam.
+- Skipped entirely under reduced motion: it navigates straight away.
+
 ### Marquees
 
 There are **two separate marquee implementations**. This is intentional but worth

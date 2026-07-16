@@ -379,12 +379,97 @@
 .cs-rise {
   animation: cs-rise 1.05s cubic-bezier(0.16, 0.84, 0.3, 1) backwards;
 }
+/* The case-study title is the subject of its own page, so it is set larger
+   than the homepage hero rather than smaller than it. */
+.cs-title {
+  font-size: clamp(2.5rem, 9vw, 7.5rem);
+}
 .cs-fade {
   animation: cs-fade 0.8s cubic-bezier(0.16, 0.84, 0.3, 1) backwards;
 }
 .cs-cover {
   animation: cs-cover 1.2s cubic-bezier(0.16, 0.84, 0.3, 1) 0.2s backwards;
   will-change: clip-path, transform;
+}
+
+/* The work index: full-width project rows at hero scale. The hovered row stays
+   lit while its siblings recede, and (on fine pointers only) the cover rides
+   the cursor. Every resting state here is the visible one: the dim, the lift
+   and the panel are all hover-driven, so with JS dead the list still reads. */
+.work-row__title {
+  /* Tops out at the hero's own max size: the work is set as loud as the name,
+     never louder. */
+  font-size: clamp(2rem, 7vw, 6rem);
+  transition:
+    transform 0.55s var(--ease-mech),
+    color 0.35s var(--ease-mech);
+}
+.work-row {
+  transition: opacity 0.45s var(--ease-mech);
+}
+.work-index[data-active='true'] .work-row[data-dim='true'] {
+  opacity: 0.3;
+}
+.work-row:hover .work-row__title,
+.work-row:focus-visible .work-row__title {
+  transform: translateX(1.5rem);
+  color: var(--brand);
+}
+.work-row:hover .work-row__index,
+.work-row:focus-visible .work-row__index {
+  color: var(--brand);
+}
+.work-row__index {
+  transition: color 0.35s var(--ease-mech);
+}
+.work-row__arrow {
+  transition:
+    transform 0.45s var(--ease-mech),
+    background-color 0.35s var(--ease-mech),
+    border-color 0.35s var(--ease-mech),
+    color 0.35s var(--ease-mech);
+}
+.work-row:hover .work-row__arrow,
+.work-row:focus-visible .work-row__arrow {
+  transform: translateX(0.35rem);
+  border-color: var(--brand);
+  background: var(--brand);
+  color: #fff;
+}
+.work-row:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 4px;
+}
+
+/* The cursor-borne cover. Sits above the nav but below the custom cursor and
+   the route mask. Pointer-events off so it never eats a click on the row. */
+.work-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  width: clamp(15rem, 24vw, 23rem);
+  aspect-ratio: 4 / 3;
+  pointer-events: none;
+  opacity: 0;
+  scale: 0.94;
+  transition:
+    opacity 0.45s var(--ease-mech),
+    scale 0.45s var(--ease-mech);
+  will-change: transform;
+}
+.work-panel[data-show='true'] {
+  opacity: 1;
+  scale: 1;
+}
+.work-panel__item {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-mech);
+}
+.work-panel__item[data-active='true'] {
+  opacity: 1;
 }
 
 /* Route mask: bar-wipe transition between project pages. Covers the screen

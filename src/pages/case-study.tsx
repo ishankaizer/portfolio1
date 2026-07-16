@@ -86,7 +86,7 @@ function CaseStudyContent({ project }: { project: Project & { study: NonNullable
               <span className="font-mono text-xs text-ink-mute">&middot; {project.year}</span>
             </div>
 
-            <h1 className="mt-5 block overflow-hidden pb-[0.08em] text-balance font-display text-4xl font-black uppercase leading-[0.98] tracking-tight text-ink sm:text-6xl">
+            <h1 className="cs-title mt-5 block overflow-hidden pb-[0.08em] text-balance font-display font-black uppercase leading-[0.9] tracking-tight text-ink">
               <span className="cs-rise block" style={{ animationDelay: '0.1s' }}>
                 {project.title}
               </span>
@@ -300,7 +300,7 @@ export function CaseStudyPage() {
                 ))}
                 <span className="font-mono text-xs text-ink-mute">&middot; {project.year}</span>
               </div>
-              <h1 className="mt-5 block overflow-hidden pb-[0.08em] text-balance font-display text-4xl font-black uppercase leading-[0.98] tracking-tight text-ink sm:text-6xl">
+              <h1 className="cs-title mt-5 block overflow-hidden pb-[0.08em] text-balance font-display font-black uppercase leading-[0.9] tracking-tight text-ink">
                 <span className="cs-rise block" style={{ animationDelay: '0.1s' }}>
                   {project.title}
                 </span>

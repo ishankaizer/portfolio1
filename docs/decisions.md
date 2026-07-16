@@ -143,3 +143,30 @@ A React-owned theme would flash the wrong palette on load. The inline script in
 `index.html` sets the `dark` class from `localStorage` or
 `prefers-color-scheme` before first paint, and `ThemeProvider` adopts whatever it
 finds. Do not move this into React.
+
+## D16. Selected Work is a hover-reveal index, not a card grid
+
+The 2-up card grid was replaced. The diagnosis was scale, not styling: the hero
+name was set up to 96px while project titles sat at 24 to 30px and covers were
+half-width 4:3 thumbnails. The site rendered the person three times louder than
+the work, contradicting the language's own rule that **projects are the heroes**.
+
+Now every project is a full-width row: index, title at `clamp(2rem, 7vw, 6rem)`
+(topping out at the hero's own max, never louder), and a mono meta row. On a fine
+pointer the cover rides the cursor and the hovered row alone stays lit.
+
+**The known trade-off:** a hover-reveal list hides imagery behind an interaction.
+This was chosen deliberately, with a required mitigation: on coarse pointers and
+under reduced motion the covers render **inline** instead
+(`hoverMode = fine && !reduce` in `work-index.tsx`). Titles and metadata are
+visible in every mode. Do not remove the inline fallback; without it the work is
+unreachable on touch, which would breach D2.
+
+**Superseded:** `WorkCard` is deleted, not merely unused.
+
+## D17. The case-study title outscales the homepage hero
+
+The case-study `h1` was `text-4xl sm:text-6xl` (36 to 60px), smaller than the
+hero. A project's own page should be led by the project, so `.cs-title` is now
+`clamp(2.5rem, 9vw, 7.5rem)`. This is the one place the work is deliberately set
+larger than the name.

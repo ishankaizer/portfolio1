@@ -91,6 +91,14 @@ Two voices, no more:
 Numerals are first class. Big type is set tight: heavy weight, negative
 tracking, line-height at or below 0.9 for display sizes.
 
+**Scale encodes priority, and the work outranks the name.** The hero tops out at
+`6rem`; project rows in the work index match it (`clamp(2rem, 7vw, 6rem)`) and
+never exceed it; a case-study title, being the subject of its own page, is the
+one element allowed to go larger (`clamp(2.5rem, 9vw, 7.5rem)`). Setting projects
+smaller than the hero is what made an earlier grid read as boring: it presented
+the work as metadata about a card. See
+[`decisions.md`](./decisions.md#d16-selected-work-is-a-hover-reveal-index-not-a-card-grid).
+
 **Serif is retired.** The language forbids serif garnish. `--font-serif` is
 deliberately aliased to Archivo so that any stray `font-serif` renders as
 Archivo rather than a system serif. See [`known-gaps.md`](./known-gaps.md), some

@@ -12,9 +12,23 @@ touching the surrounding code. None of them break the site today.
 | `.page-enter` and `@keyframes page-enter` in `index.css` | **Unused.** The page-wide entrance blur was removed because its `filter` created a stacking context that trapped the hero intro's z-index, and the intro replaced it as the load moment. |
 | `.draft-grid-strong` in `index.css` | Unused. `.draft-grid` is used. |
 | `.no-scrollbar` in `index.css` | Unused. |
-| `--ease-mech` (`@theme` at the end of `index.css`) | Unused as a token. The same curve is hard coded as `cubic-bezier(0.16, 0.84, 0.3, 1)` throughout. Either adopt the token or drop it. |
+| `--ease-mech` (`@theme` at the end of `index.css`) | Now **partly adopted**: the `.work-*` rules use `var(--ease-mech)`. The rest of the file still hard codes `cubic-bezier(0.16, 0.84, 0.3, 1)`. Finish the migration or drop the token. |
 | `site.positioning` in `src/data/site.ts` | Unused since the hero was stripped back to identity only. |
 | `@fontsource/instrument-serif` in `package.json` | **Unused dependency.** Never imported. Left over from the retired serif voice. |
+
+## Missing content
+
+- **`binkli` and `materia` have no cover asset.** `public/projects/binkli/` and
+  `public/projects/materia/` contain only `_DROP_IMAGES_HERE.txt` (plus an
+  unrelated `capstone poster.jpg`), so both fall back to the composed
+  `ProjectCover` placeholder. The dev server answers the missing path with a
+  `200 text/html` SPA fallback rather than a 404; the image still fails to decode,
+  so `onError` fires and the placeholder shows as intended.
+
+  This was tolerable when covers were half-width thumbnails. Since the work index
+  is image-forward (see [`decisions.md`](./decisions.md#d16-selected-work-is-a-hover-reveal-index-not-a-card-grid)),
+  two of six projects now reveal a placeholder on hover. **Dropping a
+  `cover.jpg` into each folder is the fix; no code change is needed.**
 
 ## Stale references
 
