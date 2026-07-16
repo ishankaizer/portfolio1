@@ -62,7 +62,7 @@ export function Footer() {
           className="select-none whitespace-nowrap text-center font-display text-[clamp(4rem,27vw,20rem)] font-black uppercase leading-[0.8] tracking-[-0.03em]"
           style={{
             color: 'color-mix(in oklab, var(--ink) 8%, var(--paper-2))',
-            marginBottom: '-0.1em',
+            marginBottom: '-0.3em',
           }}
         >
           Kaizer

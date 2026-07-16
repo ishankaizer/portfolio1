@@ -14,13 +14,15 @@ const disciplines = [
   'Frontend',
 ]
 
-const HOLD = 950
-const MOVE = 1150
+const HOLD = 1500 // how long the centred name is held before it moves
+const MOVE = 1300 // how long the slot-into-position glide takes
+const EASE = 'cubic-bezier(0.76, 0, 0.24, 1)'
 
 export function Hero() {
   const reduce = useReducedMotion()
   const nameRef = useRef<HTMLHeadingElement>(null)
-  // `intro` mounts the overlay; `ready` reveals the rest of the hero.
+  const ishanRef = useRef<HTMLSpanElement>(null)
+  const kaizerRef = useRef<HTMLSpanElement>(null)
   const [intro, setIntro] = useState(false)
   const [ready, setReady] = useState(false)
 
@@ -31,10 +33,12 @@ export function Hero() {
     } catch {
       play = true
     }
-    const el = nameRef.current
+    const h1 = nameRef.current
+    const w1 = ishanRef.current
+    const w2 = kaizerRef.current
 
     // No intro: reveal the hero content shortly after mount.
-    if (!play || reduce || !el) {
+    if (!play || reduce || !h1 || !w1 || !w2) {
       try {
         sessionStorage.setItem('introPlayed', 'true')
       } catch {
@@ -44,35 +48,59 @@ export function Hero() {
       return () => window.clearTimeout(t)
     }
 
-    // Intro: place the name at screen-centre, then glide it to its resting
-    // spot while the overlay dissolves. Driven by CSS transition + timeouts so
-    // it survives rAF throttling and always resolves.
     setIntro(true)
     document.body.style.overflow = 'hidden'
-    // Measure the true resting position (clear any stale transform first).
-    el.style.transition = 'none'
-    el.style.transform = 'none'
-    const r = el.getBoundingClientRect()
-    const dx = window.innerWidth / 2 - (r.left + r.width / 2)
-    const dy = window.innerHeight / 2 - (r.top + r.height / 2)
-    el.style.transformOrigin = 'center'
-    el.style.transform = `translate(${dx}px, ${dy}px)`
-    el.style.willChange = 'transform'
-    el.style.position = 'relative'
-    el.style.zIndex = '210'
+    h1.style.position = 'relative'
+    h1.style.zIndex = '210'
+
+    // Measure the true resting rects of each word (two-line layout).
+    w1.style.transition = 'none'
+    w2.style.transition = 'none'
+    w1.style.transform = 'none'
+    w2.style.transform = 'none'
+    const r1 = w1.getBoundingClientRect()
+    const r2 = w2.getBoundingClientRect()
+
+    // Build a single centred line and compute each word's transform to it.
+    const fontSize = parseFloat(getComputedStyle(h1).fontSize) || r1.height
+    const gap = fontSize * 0.32
+    const vw = window.innerWidth
+    const vh = window.innerHeight
+    const oneLine = r1.width + gap + r2.width
+    const s = Math.min(1, (vw * 0.9) / oneLine)
+    const total = (r1.width + gap + r2.width) * s
+    const left = (vw - total) / 2
+    const cy = vh / 2
+    const cx1 = left + (r1.width * s) / 2
+    const cx2 = left + (r1.width + gap) * s + (r2.width * s) / 2
+    const rc1x = r1.left + r1.width / 2
+    const rc1y = r1.top + r1.height / 2
+    const rc2x = r2.left + r2.width / 2
+    const rc2y = r2.top + r2.height / 2
+
+    for (const w of [w1, w2]) {
+      w.style.transformOrigin = 'center'
+      w.style.willChange = 'transform'
+    }
+    w1.style.transform = `translate(${cx1 - rc1x}px, ${cy - rc1y}px) scale(${s})`
+    w2.style.transform = `translate(${cx2 - rc2x}px, ${cy - rc2y}px) scale(${s})`
 
     const t1 = window.setTimeout(() => {
-      el.style.transition = `transform ${MOVE}ms cubic-bezier(0.16, 0.84, 0.3, 1)`
-      el.style.transform = 'none'
+      w1.style.transition = `transform ${MOVE}ms ${EASE}`
+      w2.style.transition = `transform ${MOVE}ms ${EASE} 90ms`
+      w1.style.transform = 'none'
+      w2.style.transform = 'none'
       setReady(true)
     }, HOLD)
     const t2 = window.setTimeout(() => {
-      el.style.transition = ''
-      el.style.transform = ''
-      el.style.transformOrigin = ''
-      el.style.willChange = ''
-      el.style.position = ''
-      el.style.zIndex = ''
+      for (const w of [w1, w2]) {
+        w.style.transition = ''
+        w.style.transform = ''
+        w.style.transformOrigin = ''
+        w.style.willChange = ''
+      }
+      h1.style.position = ''
+      h1.style.zIndex = ''
       document.body.style.overflow = ''
       try {
         sessionStorage.setItem('introPlayed', 'true')
@@ -80,7 +108,7 @@ export function Hero() {
         /* ignore */
       }
       setIntro(false)
-    }, HOLD + MOVE + 120)
+    }, HOLD + MOVE + 250)
 
     return () => {
       window.clearTimeout(t1)
@@ -102,7 +130,7 @@ export function Hero() {
         <div
           aria-hidden
           className={cn(
-            'fixed inset-0 z-[200] bg-paper transition-opacity duration-700 ease-out',
+            'fixed inset-0 z-[200] bg-paper transition-opacity duration-1000 ease-out',
             ready ? 'opacity-0' : 'opacity-100',
           )}
         />
@@ -123,9 +151,12 @@ export function Hero() {
               ref={nameRef}
               className="mt-6 font-display text-[clamp(3rem,11vw,7.5rem)] font-black uppercase leading-[0.86] tracking-[-0.03em] text-ink"
             >
-              Ishan
-              <br />
-              <span className="text-ink-mute">Kaizer</span>
+              <span ref={ishanRef} className="block w-fit">
+                Ishan
+              </span>
+              <span ref={kaizerRef} className="block w-fit text-ink-mute">
+                Kaizer
+              </span>
             </h1>
 
             <p
