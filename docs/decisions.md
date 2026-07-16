@@ -120,16 +120,20 @@ panel that swiped up). It is replaced by the hero intro and is now dead code, se
 
 **Reversed.** The order was originally Hero, About, then interludes, then
 Selected Work, on the reasoning that the project count is small so the site
-should lead with the person. That was flipped: the order is now Hero,
-**Selected Work**, About, the terms-banner interlude, Music, Experience, Apart,
-Skills, Contact (`pages/home.tsx`). A recruiter now reaches the work
-immediately, before any prose about who made it.
+should lead with the person. That was flipped in two steps: Selected Work moved
+ahead of About, then the terms-banner marquee (the discipline strip: Industrial
+Design, Product Design, UI/UX, and so on) moved from between About and Selected
+Work to sit immediately after the hero instead. Current order is Hero,
+**TermsBanner**, **Selected Work**, About, Music, Experience, Apart, Skills,
+Contact (`pages/home.tsx`). A recruiter now reaches the work immediately, before
+any prose about who made it.
 
-`SelectedWork`'s `SectionHeader` still carries `index="02"` (Experience is
-`03`, Apart `04`, and so on). This stayed correct without changes, because
-About, Music, and the terms banner have never carried a visible index number,
-so the numbered sections' relative order (Work, Experience, Apart, Skills,
-Contact) did not change, only what sits between Hero and Work did.
+`SelectedWork`'s `SectionHeader` carries `index="01"` and About's inline eyebrow
+(hardcoded in `about.tsx`, not a `SectionHeader` prop) was updated to `02` to
+match, since the numbers must reflect real order. Experience/Apart/Skills/Contact
+stayed `03`-`06`: their order relative to each other, and to About, never
+changed. The terms banner itself carries no visible index (it is `aria-hidden`
+and decorative), so moving it required no renumbering.
 
 About is deliberately short: one large statement plus one supporting line, with a
 lot of air, and the portrait behind the text rather than beside it. A long

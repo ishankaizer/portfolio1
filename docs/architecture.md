@@ -92,11 +92,12 @@ The case study page branches on the data, not on a flag:
 Section order is defined in `src/pages/home.tsx`:
 
 ```
-Hero -> SelectedWork -> About -> TermsBanner -> Music -> Experience -> Apart -> Skills -> Contact
+Hero -> TermsBanner -> SelectedWork -> About -> Music -> Experience -> Apart -> Skills -> Contact
 ```
 
-The ordering is deliberate: Selected Work sits directly after the hero, so a
-recruiter reaches the work before any prose about who made it. See
+The ordering is deliberate: `TermsBanner` (the discipline marquee) is the
+immediate beat after the hero, then Selected Work, so a recruiter reaches the
+work before any prose about who made it. See
 [`decisions.md`](./decisions.md#d12-selected-work-sits-directly-after-the-hero-about-follows-it).
 
 Numbered sections read 01 to 06 down the page: Selected Work (01, `SectionHeader`

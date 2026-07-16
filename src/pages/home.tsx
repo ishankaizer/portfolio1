@@ -14,9 +14,9 @@ export function HomePage() {
     <>
       <Seo />
       <Hero />
+      <TermsBanner />
       <SelectedWork />
       <About />
-      <TermsBanner />
       <Music />
       <Experience />
       <Apart />
