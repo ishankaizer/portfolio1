@@ -56,15 +56,19 @@ export function RouteMaskProvider({ children }: { children: ReactNode }) {
     <RouteMaskContext.Provider value={go}>
       {children}
       {phase !== 'idle' && (
-        <div aria-hidden className="pointer-events-none fixed inset-0 z-[290] flex">
+        <div aria-hidden className="pointer-events-none fixed inset-0 z-[290]">
           {Array.from({ length: BARS }).map((_, i) => (
             <span
               key={i}
               className={cn(
-                'route-mask-bar h-full flex-1 bg-ink',
+                'route-mask-bar absolute top-0 h-full bg-ink',
                 phase === 'covering' ? 'route-mask-bar--cover' : 'route-mask-bar--reveal',
               )}
               style={{
+                // Overlap neighbours by a pixel so sub-pixel rounding on each
+                // bar's own compositor layer can't open a hairline gap.
+                left: `calc(${i} * (100% / ${BARS}) - 1px)`,
+                width: `calc(100% / ${BARS} + 2px)`,
                 animationDelay: `${i * (phase === 'covering' ? COVER_STAGGER : REVEAL_STAGGER)}s`,
               }}
             />
