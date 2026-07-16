@@ -46,6 +46,12 @@ RootLayout
 `RootLayout` renders the persistent shell: `BackgroundField`, `CustomCursor`,
 skip link, `Nav`, `<main>`, `Footer`, `ScrollRestoration`.
 
+## Case-study page order
+
+`pages/case-study.tsx` renders: header (title, hook), cover, spec row, **the
+deck**, then the written study, then prev/next and the CTA. The deck leads
+deliberately; see [`decisions.md`](./decisions.md#d18-the-deck-leads-the-case-study-the-written-story-follows-it).
+
 ## Data layer
 
 All content is static TypeScript in `src/data`. There is no CMS, no fetching.

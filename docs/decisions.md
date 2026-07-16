@@ -126,10 +126,19 @@ About is deliberately short: one large statement plus one supporting line, with 
 lot of air, and the portrait behind the text rather than beside it. A long
 self-selling essay was explicitly cut.
 
-## D13. Deck images are shown with zero gap
+## D13. Deck images are shown with zero gap, at the page's own width
 
 Project decks were authored to be read as continuous slides. `SlideGallery`
 stacks them with no gap, no border, and no rounding.
+
+The slides are **not** 16:9 presentation slides. They are near-square designed
+page sections (Park IT's are 1500x1558) that read as one continuous document:
+slide 01 is a hero plus an "About" block, slide 05 is a "Research" block
+carrying the real figures. **This is why they must not be chopped into a
+carousel or a thumbnail grid**; doing so would cut a designed page apart.
+
+The deck spans the full `Container` width (~1084px rendered), not a narrower
+reading column. It is the work, so it is not set smaller than the prose about it.
 
 ## D14. Static social tags in `index.html`
 
@@ -170,3 +179,29 @@ The case-study `h1` was `text-4xl sm:text-6xl` (36 to 60px), smaller than the
 hero. A project's own page should be led by the project, so `.cs-title` is now
 `clamp(2.5rem, 9vw, 7.5rem)`. This is the one place the work is deliberately set
 larger than the name.
+
+## D18. The deck leads the case study; the written story follows it
+
+Measured on Park IT, the old order put the deck **7.7 screens down a 23.5 screen
+page**, with the deck itself accounting for 14.5 of those screens. A recruiter
+had to scroll seven screens of prose before seeing any actual work.
+
+The deck is already a complete, designed case study with its own narrative and
+figures (see D13). The written study restates the same beats: its process
+headings are "Research", "Insight" and "Design", which is exactly what slides 01
+to 05 already show, and better. Park IT's `outcome.stats` is even empty while the
+deck carries the real numbers.
+
+So `SlideGallery` now renders **directly after the header, cover and spec row**,
+and the written study sits below it as optional depth. The deck's first slide is
+`loading="eager"` because it is now near the top; lazy loading it made it pop in.
+
+Time to first real work: **7.7 screens to 1.7**.
+
+The page got *longer* (23.5 to 26.5 screens), because widening the deck makes
+each near-square slide taller. That was accepted knowingly: scrolling the deck is
+a recruiter looking at the work, whereas scrolling preamble to reach it is not.
+Length was never the problem; order was.
+
+**Not done, and worth revisiting:** the written study genuinely duplicates the
+deck. Trimming it to a short "at a glance" was offered and declined for now.

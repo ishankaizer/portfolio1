@@ -121,6 +121,11 @@ function CaseStudyContent({ project }: { project: Project & { study: NonNullable
           </dl>
         </Container>
 
+        {/* The deck leads. It is the work itself, and it is already a complete
+            designed case study, so it comes before the written retelling of it
+            rather than 7 screens after. */}
+        <SlideGallery slides={project.slides ?? []} projectTitle={project.title} />
+
         {/* Body: centred reading column, media breaks out wider */}
         <Container className="py-16">
           <div className="mx-auto flex max-w-3xl flex-col gap-16">
@@ -202,9 +207,6 @@ function CaseStudyContent({ project }: { project: Project & { study: NonNullable
             </Block>
           </div>
         </Container>
-
-        {/* The full deck */}
-        <SlideGallery slides={project.slides ?? []} projectTitle={project.title} />
 
         {/* Prev / next */}
         <Container className="pb-16">
