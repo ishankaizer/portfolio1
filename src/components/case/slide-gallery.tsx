@@ -36,7 +36,7 @@ export function SlideGallery({
               presented.
             </p>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col">
             {slides.map((src, i) => (
               <img
                 key={src}
@@ -44,7 +44,7 @@ export function SlideGallery({
                 alt={`${projectTitle} slide ${i + 1} of ${slides.length}`}
                 loading="lazy"
                 decoding="async"
-                className="w-full rounded border border-hairline bg-paper-2"
+                className="block w-full align-top"
               />
             ))}
           </div>

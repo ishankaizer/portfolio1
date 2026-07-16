@@ -30,10 +30,10 @@ export function Assemble({ children, className, from = 'up', delay = 0 }: Assemb
   return (
     <motion.div
       className={cn(className)}
-      initial={reduce ? false : { opacity: 0, x: t.x ?? 0, y: t.y ?? 0 }}
-      whileInView={reduce ? undefined : { opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.55, delay, ease: [0.16, 0.84, 0.3, 1] }}
+      initial={reduce ? { opacity: 0 } : { opacity: 0, x: t.x ?? 0, y: t.y ?? 0 }}
+      whileInView={reduce ? { opacity: 1 } : { opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: reduce ? 0.5 : 0.55, delay, ease: [0.16, 0.84, 0.3, 1] }}
     >
       {children}
     </motion.div>

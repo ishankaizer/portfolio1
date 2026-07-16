@@ -11,18 +11,20 @@ interface RevealProps {
 }
 
 /**
- * Single shared scroll-reveal, a quiet blur + rise, once per element.
- * Fully collapses to no animation under prefers-reduced-motion.
+ * Single shared scroll-reveal: a quiet blur + rise as the element enters view,
+ * once per element. Triggers on a slice of the element actually being visible
+ * (so it visibly pops in, rather than pre-revealing off-screen). Reduced motion
+ * keeps a gentle opacity fade instead of going fully static.
  */
-export function Reveal({ children, className, delay = 0, y = 16 }: RevealProps) {
+export function Reveal({ children, className, delay = 0, y = 20 }: RevealProps) {
   const reduce = useReducedMotion()
   return (
     <motion.div
       className={cn(className)}
-      initial={reduce ? false : { opacity: 0, y, filter: 'blur(6px)' }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0, filter: 'blur(0px)' }}
-      viewport={{ once: true, margin: '200px' }}
-      transition={{ duration: 0.6, delay, ease: [0.2, 0.7, 0.2, 1] }}
+      initial={reduce ? { opacity: 0 } : { opacity: 0, y, filter: 'blur(6px)' }}
+      whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0, filter: 'blur(0px)' }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: reduce ? 0.5 : 0.65, delay, ease: [0.16, 0.84, 0.3, 1] }}
     >
       {children}
     </motion.div>

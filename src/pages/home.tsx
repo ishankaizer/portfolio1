@@ -16,8 +16,8 @@ export function HomePage() {
       <Hero />
       <About />
       <TermsBanner />
-      <Music />
       <SelectedWork />
+      <Music />
       <Experience />
       <Apart />
       <Skills />

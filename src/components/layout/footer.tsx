@@ -1,13 +1,12 @@
 import { ArrowUpRight } from 'lucide-react'
 import { Container } from '@/components/common/container'
-import { Wordmark } from '@/components/common/wordmark'
 import { site } from '@/data/site'
 
 export function Footer() {
   const year = new Date().getFullYear()
   return (
-    <footer className="border-t border-hairline bg-paper-2">
-      <Container className="flex flex-col gap-10 py-16">
+    <footer className="overflow-hidden border-t border-hairline bg-paper-2">
+      <Container className="flex flex-col gap-10 pt-16 pb-8">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div className="max-w-md">
             <p className="font-mono text-xs uppercase tracking-[0.14em] text-ink-mute">
@@ -45,17 +44,24 @@ export function Footer() {
           <p className="font-mono text-xs text-ink-mute">
             © {year} {site.name}. Designed &amp; built in Bengaluru.
           </p>
-          <div className="flex items-center gap-4">
-            <Wordmark className="text-base" />
-            <a
-              href="#top"
-              className="inline-block py-2 font-mono text-xs uppercase tracking-[0.08em] text-ink-mute transition-colors hover:text-ink"
-            >
-              Back to top ↑
-            </a>
-          </div>
+          <a
+            href="#top"
+            className="inline-block py-2 font-mono text-xs uppercase tracking-[0.08em] text-ink-mute transition-colors hover:text-ink"
+          >
+            Back to top ↑
+          </a>
         </div>
       </Container>
+
+      {/* Signature: the name, oversized. */}
+      <div className="px-4 pb-4 sm:pb-6">
+        <p
+          aria-hidden
+          className="select-none whitespace-nowrap text-center font-display text-[clamp(4rem,27vw,20rem)] font-black uppercase leading-[0.8] tracking-[-0.03em] text-ink"
+        >
+          Kaizer
+        </p>
+      </div>
     </footer>
   )
 }

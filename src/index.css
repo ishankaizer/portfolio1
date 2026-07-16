@@ -377,13 +377,13 @@
   }
 }
 .cs-rise {
-  animation: cs-rise 0.85s cubic-bezier(0.16, 0.84, 0.3, 1) backwards;
+  animation: cs-rise 1.05s cubic-bezier(0.16, 0.84, 0.3, 1) backwards;
 }
 .cs-fade {
-  animation: cs-fade 0.7s cubic-bezier(0.16, 0.84, 0.3, 1) backwards;
+  animation: cs-fade 0.8s cubic-bezier(0.16, 0.84, 0.3, 1) backwards;
 }
 .cs-cover {
-  animation: cs-cover 1s cubic-bezier(0.16, 0.84, 0.3, 1) 0.15s backwards;
+  animation: cs-cover 1.2s cubic-bezier(0.16, 0.84, 0.3, 1) 0.2s backwards;
   will-change: clip-path, transform;
 }
 
