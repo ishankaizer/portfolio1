@@ -7,7 +7,7 @@ export function SelectedWork() {
   return (
     <Section id="work" divided>
       <SectionHeader
-        index="02"
+        index="01"
         eyebrow="Selected work"
         title={
           <>

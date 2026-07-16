@@ -92,17 +92,18 @@ The case study page branches on the data, not on a flag:
 Section order is defined in `src/pages/home.tsx`:
 
 ```
-Hero -> About -> TermsBanner -> SelectedWork -> Music -> Experience -> Apart -> Skills -> Contact
+Hero -> SelectedWork -> About -> TermsBanner -> Music -> Experience -> Apart -> Skills -> Contact
 ```
 
-The ordering is deliberate: About sits directly after the hero, and the two
-marquee interludes (TermsBanner, Music) space the work out so a visitor meets
-the person and the craft before the project grid. See
-[`decisions.md`](./decisions.md).
+The ordering is deliberate: Selected Work sits directly after the hero, so a
+recruiter reaches the work before any prose about who made it. See
+[`decisions.md`](./decisions.md#d12-selected-work-sits-directly-after-the-hero-about-follows-it).
 
-Numbered sections read 01 to 06 down the page: About (01, inline eyebrow),
-Selected Work (02), Experience (03), Apart (04), Skills (05), Contact (06).
-The unnumbered interludes sit between them. **If you reorder sections, renumber.**
+Numbered sections read 01 to 06 down the page: Selected Work (01, `SectionHeader`
+prop), About (02, inline eyebrow in `about.tsx`, not a `SectionHeader`),
+Experience (03), Apart (04), Skills (05), Contact (06). The unnumbered
+interludes (TermsBanner, Music) sit between them. **If you reorder sections,
+renumber**, both the `SectionHeader index` props and About's hardcoded span.
 
 ## Theming
 

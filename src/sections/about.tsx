@@ -22,7 +22,7 @@ export function About() {
 
       <Container className="relative py-28 sm:py-36 lg:py-44">
         <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.14em] text-ink-mute">
-          <span className="font-semibold text-brand">01</span>
+          <span className="font-semibold text-brand">02</span>
           <span aria-hidden className="h-px w-6 bg-hairline" />
           <span>About</span>
         </div>

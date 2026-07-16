@@ -116,15 +116,24 @@ lands exact.
 panel that swiped up). It is replaced by the hero intro and is now dead code, see
 [`known-gaps.md`](./known-gaps.md).
 
-## D12. About sits directly after the hero; projects come later
+## D12. Selected Work sits directly after the hero; About follows it
 
-The project count is small, so the site leads with the person and the craft. The
-order is Hero, About, then the two marquee interludes, then Selected Work. The
-interludes buy time and personality before the work.
+**Reversed.** The order was originally Hero, About, then interludes, then
+Selected Work, on the reasoning that the project count is small so the site
+should lead with the person. That was flipped: the order is now Hero,
+**Selected Work**, About, the terms-banner interlude, Music, Experience, Apart,
+Skills, Contact (`pages/home.tsx`). A recruiter now reaches the work
+immediately, before any prose about who made it.
+
+`SelectedWork`'s `SectionHeader` still carries `index="02"` (Experience is
+`03`, Apart `04`, and so on). This stayed correct without changes, because
+About, Music, and the terms banner have never carried a visible index number,
+so the numbered sections' relative order (Work, Experience, Apart, Skills,
+Contact) did not change, only what sits between Hero and Work did.
 
 About is deliberately short: one large statement plus one supporting line, with a
 lot of air, and the portrait behind the text rather than beside it. A long
-self-selling essay was explicitly cut.
+self-selling essay was explicitly cut. That reasoning is unaffected by the reorder.
 
 ## D13. Deck images are shown with zero gap, at the page's own width
 
