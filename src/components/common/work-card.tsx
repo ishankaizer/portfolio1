@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import type { Project } from '@/types'
 import { Badge } from '@/components/ui/badge'
 import { ProjectCover } from './project-cover'
+import { useRouteMaskNavigate } from './route-mask'
 import { cn } from '@/lib/utils'
 
 interface WorkCardProps {
@@ -16,6 +16,7 @@ export function WorkCard({ project, index, className, priority }: WorkCardProps)
   const isExternal = Boolean(project.external)
   const href = isExternal ? project.external! : `/work/${project.slug}`
   const label = `${project.title}, ${isExternal ? 'open live site' : 'read case study'}`
+  const maskNavigate = useRouteMaskNavigate()
 
   const inner = (
     <>
@@ -75,8 +76,17 @@ export function WorkCard({ project, index, className, priority }: WorkCardProps)
       {inner}
     </a>
   ) : (
-    <Link to={href} aria-label={label} className={classes}>
+    <a
+      href={href}
+      aria-label={label}
+      className={classes}
+      onClick={(e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+        e.preventDefault()
+        maskNavigate(href)
+      }}
+    >
       {inner}
-    </Link>
+    </a>
   )
 }

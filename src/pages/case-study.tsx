@@ -5,6 +5,7 @@ import type { Project } from '@/types'
 import { Seo } from '@/components/common/seo'
 import { Container } from '@/components/common/container'
 import { Reveal } from '@/components/common/reveal'
+import { useRouteMaskNavigate } from '@/components/common/route-mask'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ProjectCover } from '@/components/common/project-cover'
@@ -246,10 +247,17 @@ function AdjacentLink({
   direction: 'prev' | 'next'
 }) {
   const isNext = direction === 'next'
+  const href = `/work/${project.slug}`
+  const maskNavigate = useRouteMaskNavigate()
   return (
-    <Link
-      to={`/work/${project.slug}`}
+    <a
+      href={href}
       className={`group flex flex-col gap-1 rounded-xl border border-hairline p-6 transition-colors hover:border-ink/25 ${isNext ? 'sm:items-end sm:text-right' : ''}`}
+      onClick={(e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+        e.preventDefault()
+        maskNavigate(href)
+      }}
     >
       <span className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.1em] text-ink-mute">
         {!isNext && <ArrowLeft className="size-3.5" />}
@@ -259,7 +267,7 @@ function AdjacentLink({
       <span className="font-display text-xl font-bold uppercase tracking-tight text-ink transition-colors group-hover:text-brand-strong">
         {project.title}
       </span>
-    </Link>
+    </a>
   )
 }
 

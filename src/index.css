@@ -387,6 +387,38 @@
   will-change: clip-path, transform;
 }
 
+/* Route mask: bar-wipe transition between project pages. Covers the screen
+   in staggered vertical bars, then peels them away once the new route has
+   mounted. Phase changes are driven by hard setTimeouts in route-mask.tsx,
+   never by animationend, so the mask cannot get stuck covering the page. */
+@keyframes route-mask-cover {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes route-mask-reveal {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+.route-mask-bar {
+  will-change: transform;
+}
+.route-mask-bar--cover {
+  transform-origin: bottom;
+  animation: route-mask-cover 0.5s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+}
+.route-mask-bar--reveal {
+  transform-origin: top;
+  animation: route-mask-reveal 0.5s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+}
+
 /* First-load intro overlay: name reveal, then a compositor-driven swipe up. */
 .preloader {
   transform: translateY(0);

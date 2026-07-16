@@ -1,13 +1,14 @@
 import { Suspense } from 'react'
 import { Outlet, ScrollRestoration } from 'react-router-dom'
 import { BackgroundField } from '@/components/common/background-field'
+import { RouteMaskProvider } from '@/components/common/route-mask'
 import { CustomCursor } from './custom-cursor'
 import { Nav } from './nav'
 import { Footer } from './footer'
 
 export function RootLayout() {
   return (
-    <>
+    <RouteMaskProvider>
       <BackgroundField />
       <CustomCursor />
       <a
@@ -25,6 +26,6 @@ export function RootLayout() {
       </main>
       <Footer />
       <ScrollRestoration />
-    </>
+    </RouteMaskProvider>
   )
 }
