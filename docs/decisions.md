@@ -218,3 +218,33 @@ Length was never the problem; order was.
 
 **Not done, and worth revisiting:** the written study genuinely duplicates the
 deck. Trimming it to a short "at a glance" was offered and declined for now.
+
+## D19. The toolkit is a type specimen, not a card grid
+
+The 3-column grid of abbr-chip cards was replaced with five capability lines
+(Interface, Form & CAD, Image & Print, Motion, Automation), each a flowing
+baseline of tool names set in Archivo black. **Scale encodes reach**: how
+central a tool is to the practice, declared as `scale: 'lg' | 'md' | 'sm'` in
+`toolGroups` (`data/about.ts`), because it is a measurement, not styling. The
+section copy states the encoding outright so it reads as information, not as a
+private conceit.
+
+Constraints that shaped it:
+
+- Tool names cap at `clamp(2.5rem, 5.5vw, 4.5rem)`, **below** the work index's
+  6rem: instruments never outrank the work they produce (extends D16's scale
+  hierarchy).
+- Rows carry no index numbers. They were tried and cut: stacked under the "05
+  Toolkit" header they were a second numbering system doing nothing real,
+  unlike work-index numbers which identify projects.
+- Rows enter via `Assemble` from alternating sides, the signature motion, one
+  idea per row.
+- Capability labels sit as mono margin notes (right on desktop, above on
+  mobile), naming what the tools serve so a hiring manager scans five
+  capability words rather than nine app names.
+
+**Rejected:** vendor logo walls (nine foreign brand voices in a one-accent
+site), skill bars and radar charts (self-ratings that hiring managers
+distrust), a third marquee (device already used twice), periodic-table tiles
+(still boxes). The `abbr` field died with the cards and was removed from the
+`Tool` type.

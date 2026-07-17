@@ -86,9 +86,16 @@ export interface ExperienceRole {
 }
 
 export interface Tool {
-  abbr: string
   label: string
   note: string
+  /** How central the tool is to the practice; sets its display scale. */
+  scale: 'lg' | 'md' | 'sm'
+}
+
+export interface ToolGroup {
+  /** Capability the tools serve, e.g. "Interface". */
+  label: string
+  tools: Tool[]
 }
 
 export interface Philosophy {

@@ -1,4 +1,4 @@
-import type { Philosophy, Tool } from '@/types'
+import type { Philosophy, ToolGroup } from '@/types'
 
 export const about = {
   /** Short, spacious About. Kept deliberately minimal. */
@@ -25,14 +25,45 @@ export const hobbies = [
   'Video editing',
 ]
 
-export const tools: Tool[] = [
-  { abbr: 'Fg', label: 'Figma', note: 'UX/UI, prototyping, systems' },
-  { abbr: 'Ps', label: 'Photoshop', note: 'Compositing, product viz' },
-  { abbr: 'Ai', label: 'Illustrator', note: 'Vector, iconography' },
-  { abbr: 'Bl', label: 'Blender', note: '3D modeling, render' },
-  { abbr: 'Fu', label: 'Fusion 360', note: 'CAD, mechanical form' },
-  { abbr: 'Pr', label: 'Premiere', note: 'Edit, motion' },
-  { abbr: 'Ae', label: 'After Effects', note: 'Motion graphics' },
-  { abbr: 'Cd', label: 'CorelDRAW', note: 'Print production' },
-  { abbr: 'Py', label: 'Python', note: 'Design automation' },
+/**
+ * The toolkit as a type specimen: grouped by the capability the tools serve,
+ * with `scale` encoding how central each tool is to the practice. Scale is a
+ * real measurement (what gets reached for most), not decoration; retune it
+ * here, not in the component.
+ */
+export const toolGroups: ToolGroup[] = [
+  {
+    label: 'Interface',
+    tools: [
+      { label: 'Figma', note: 'UX/UI, prototyping, systems', scale: 'lg' },
+    ],
+  },
+  {
+    label: 'Form & CAD',
+    tools: [
+      { label: 'Blender', note: '3D modeling, render', scale: 'lg' },
+      { label: 'Fusion 360', note: 'CAD, mechanical form', scale: 'md' },
+    ],
+  },
+  {
+    label: 'Image & Print',
+    tools: [
+      { label: 'Photoshop', note: 'Compositing, product viz', scale: 'md' },
+      { label: 'Illustrator', note: 'Vector, iconography', scale: 'md' },
+      { label: 'CorelDRAW', note: 'Print production', scale: 'sm' },
+    ],
+  },
+  {
+    label: 'Motion',
+    tools: [
+      { label: 'After Effects', note: 'Motion graphics', scale: 'md' },
+      { label: 'Premiere', note: 'Edit, grade', scale: 'sm' },
+    ],
+  },
+  {
+    label: 'Automation',
+    tools: [
+      { label: 'Python', note: 'Scripts that delete the repetitive parts', scale: 'md' },
+    ],
+  },
 ]
