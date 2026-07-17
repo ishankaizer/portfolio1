@@ -248,3 +248,29 @@ site), skill bars and radar charts (self-ratings that hiring managers
 distrust), a third marquee (device already used twice), periodic-table tiles
 (still boxes). The `abbr` field died with the cards and was removed from the
 `Tool` type.
+
+**Extended with the exploded view (same day).** Prompted by a reference site
+that staged tools as 3D keycaps in a lit scene, the principle taken (tools as
+objects in one atmospheric moment, never the skin) was translated into the
+site's own language: on desktop the specimen now opens **exploded**. The nine
+names lie strewn across the sheet (deterministic per-part offsets and
+rotations in `SCATTER`, hand-composed, not random) over the faint `.draft-grid`,
+and scroll scrubs each part into its seat in sequence while the grid fades.
+Assembly, the language's recurring act, performed live.
+
+Robustness reasoning, in the spirit of D8:
+
+- The **resting layout is the natural flow layout**; scatter is pure transform
+  driven by scroll position (`useScroll` + `useTransform`, no rAF loop of our
+  own, no entrance triggers). With JS dead the section is simply the assembled
+  specimen. If rAF ever stalls, parts rest scattered: posed, but fully visible
+  and legible. Opacity of content never animates, so nothing can be hidden.
+- Capability labels were briefly wired to fade in at 72% progress and cut in
+  review: that hid real content behind an interaction (rule 1). They print on
+  the sheet from the start.
+- **Small screens (max-width 640px) and reduced motion get the static
+  assembled specimen**, no stage, no scrub. At 375px wide the scatter clipped
+  six of nine names mid-word at the viewport edge, which reads as broken, not
+  composed. D2: usability is never traded for a trend.
+- The stage is 180vh with a sticky viewport, roughly one screen of dwell. The
+  grid layer is `aria-hidden` and decorative.
